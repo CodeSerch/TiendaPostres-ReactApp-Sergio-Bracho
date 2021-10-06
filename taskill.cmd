@@ -1,0 +1,1 @@
+C:\>Taskkill /PID <PID> /F
