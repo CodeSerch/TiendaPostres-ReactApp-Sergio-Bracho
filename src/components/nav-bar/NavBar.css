@@ -1,8 +1,89 @@
-html,
-body {
-  overflow-x: hidden; /* Prevent scroll on narrow devices */
-}
-
-body {
-  padding-top: 56px;
-}
+.navbar.navbar-default {
+    background-color: #ffffff;
+    border-color: #ffffff;
+  }
+  .navbar.navbar-default .navbar-brand {
+    color: #292929;
+  }
+  .navbar.navbar-default .navbar-brand:hover,
+  .navbar.navbar-default .navbar-brand:focus {
+    color: #ffd4d4;
+  }
+  .navbar.navbar-default .navbar-text {
+    color: #292929;
+  }
+  .navbar.navbar-default .navbar-nav > li > a {
+    color: #292929;
+  }
+  .navbar.navbar-default .navbar-nav > li > a:hover,
+  .navbar.navbar-default .navbar-nav > li > a:focus {
+    color: #ffd4d4;
+  }
+  .navbar.navbar-default .navbar-nav > .active > a,
+  .navbar.navbar-default .navbar-nav > .active > a:hover,
+  .navbar.navbar-default .navbar-nav > .active > a:focus {
+    color: #ffd4d4;
+    background-color: #ffffff;
+  }
+  .navbar.navbar-default .navbar-nav > .open > a,
+  .navbar.navbar-default .navbar-nav > .open > a:hover,
+  .navbar.navbar-default .navbar-nav > .open > a:focus {
+    color: #ffd4d4;
+    background-color: #ffffff;
+  }
+  .navbar.navbar-default .navbar-toggle {
+    border-color: #ffffff;
+  }
+  .navbar.navbar-default .navbar-toggle:hover,
+  .navbar.navbar-default .navbar-toggle:focus {
+    background-color: #ffffff;
+  }
+  .navbar.navbar-default .navbar-toggle .icon-bar {
+    background-color: #292929;
+  }
+  .navbar.navbar-default .navbar-collapse,
+  .navbar.navbar-default .navbar-form {
+    border:none;
+  }
+  .navbar.navbar-default .navbar-link {
+    color: #292929;
+  }
+  .navbar.navbar-default .navbar-link:hover {
+    color: #ffd4d4;
+  }
+  
+  
+  .navbar-brand {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+  }
+  
+  .nav.navbar-nav > li.navbar-left {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11px;
+  }
+  
+  .navbar-brand {
+    padding: 0px;
+  }
+  .navbar-brand>img {
+    height: 90%;
+    width: auto;
+  }
+  
+  .banner {
+      width: 100%;
+      /*background-color: #c3d7df;*/
+  }
+  
+  .banner-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+  }
+  @media (min-width:768px) and (max-width:991px){
+    .container.navbar-container {
+       width:100%;
+       padding:0;
+    }
+  }
