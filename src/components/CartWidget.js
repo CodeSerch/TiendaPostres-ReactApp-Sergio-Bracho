@@ -1,10 +1,11 @@
 import React from 'react'
 
+
 const CardWidget = () => {
     return (
-        <div>
-            <img src="imgs/carro.png"></img>
-        </div>
+        
+        <i class="fas fa-shopping-cart"></i>
+        
     )
 }
 
