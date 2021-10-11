@@ -1,6 +1,7 @@
 import "./NavBar.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import CardWidget from "../CartWidget";
 import React from "react";
 
 export const NavBar = () => {
@@ -52,6 +53,7 @@ export const NavBar = () => {
 
 
             <ul />
+            <CardWidget/>
             <form className="d-flex">
                 <input
                     className="form-control me-2"
