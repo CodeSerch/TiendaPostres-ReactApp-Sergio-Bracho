@@ -38,9 +38,9 @@ class ItemListContainer extends Component {
     render() {
         return (
             <div>
-                <button onClick={() => this.handleClick()}>        Click me
+                <button onClick={() => this.handleClick()}> {this.state.session ? <Login /> : <Logout />}
                 </button>
-                {this.state.session ? <Login /> : <Logout />}
+                
             </div>
         );
     }
