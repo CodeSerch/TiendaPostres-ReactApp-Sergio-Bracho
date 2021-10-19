@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Tienda de Postres</h1>
+        <h1>Tienda de Postres v.2</h1>
       </header>
       <NavBar />
       <Contador/>
