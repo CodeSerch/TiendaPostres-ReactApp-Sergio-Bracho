@@ -1,8 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/nav-bar/NavBar";
-import ItemListContainer from "./components/ItemListContainer"
-
+import ItemList from "./components/lista de items/ItemList";
+import items from "./components/lista de items/Item"
 
 
 function App() {
@@ -12,9 +12,9 @@ function App() {
         <h1>Tienda de Postres</h1>
       </header>
       <NavBar />
+      <ItemList items={items}></ItemList>
     </div>
   );
 }
-
 
 export default App;
