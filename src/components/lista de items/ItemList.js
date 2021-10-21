@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { promises } from "../lista de items/promises";
-import items from "./Item";
+import Item from "./Item";
 
 const Promises = ({ items }) => {
     const [message, setMessage] = useState("");
