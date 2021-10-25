@@ -1,12 +1,13 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const items = ({ id, name, description, stock, imgurl }) => {
     const handleShowProductClick = () => {
-        console.log(`Product ${id} clicked`);
     }
+
     return (
-        <Card style={{ width: "18rem", display: "inline"} }>
+        <Card style={{ width: "18rem", display: "flex"  }}>
             <Card.Body>
                 <Card.Title>Product</Card.Title>
                 <Card.Text>
@@ -19,15 +20,17 @@ const items = ({ id, name, description, stock, imgurl }) => {
                     <strong>description</strong> {description}
                 </Card.Text>
                 <Card.Text>
-                    <img src={imgurl} width="150" height="150"/>
+                    <img src={imgurl} width="150" height="150" />
                 </Card.Text>
                 <Card.Text>
                     <strong>Stock</strong> {stock}
                 </Card.Text>
-                <button variant="primary" onClick={handleShowProductClick}>
-                    Ver detalle del producto
+                <Link to={`/products/${id}`}>
+                <button type="button">
+                    ver Detalle
                 </button>
-            </Card.Body>
+            </Link>
+        </Card.Body>
         </Card >
     )
 }

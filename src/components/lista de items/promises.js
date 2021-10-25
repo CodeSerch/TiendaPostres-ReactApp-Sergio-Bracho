@@ -9,13 +9,13 @@ export const promises = (
     const itemsResponse = new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(items);
-        }, 3000);
+        }, 1000);
     });
 
     itemsResponse
         .then((result) => {
             console.log(result);
-            setMessage(`Result is correct ${JSON.stringify(result)}`);
+            setMessage(`Result is correct`);
             setIsSucces(true);
             setCurrentItems(result);
         })
