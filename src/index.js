@@ -3,15 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Greeting from './components/Greeting';
-import ItemListContainer from "./components/ItemListContainer"
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Greeting />
-    <ItemListContainer/>
   </React.StrictMode>,
+  
   document.getElementById('root')
 );
 

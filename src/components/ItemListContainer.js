@@ -40,7 +40,6 @@ class ItemListContainer extends Component {
             <div>
                 <button onClick={() => this.handleClick()}> {this.state.session ? <Login /> : <Logout />}
                 </button>
-                
             </div>
         );
     }

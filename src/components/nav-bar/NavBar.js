@@ -1,12 +1,14 @@
 import "./NavBar.css";
+import { Link, BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import CardWidget from "../CartWidget";
 import React from "react";
 
+
 export const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg" style={{backgroundColor: '#7D5A50'}}>
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           PostresOlavarria
@@ -28,6 +30,7 @@ export const NavBar = () => {
               <a className="nav-link active" aria-current="page" href="/">
                 Inicio
               </a>
+
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/products">

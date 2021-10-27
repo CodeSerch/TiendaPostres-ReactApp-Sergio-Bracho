@@ -24,7 +24,7 @@ const Promises = ({ items }) => {
     }, [items]);
 
     return (
-        <div>
+        <div style={{backgroundColor: "#E5B299"}}>
             <h1>Promises</h1>
             <h3 className={isSuccess ? "successMessage" : "errorMessage"}>
                 {message}
