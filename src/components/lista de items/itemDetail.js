@@ -29,9 +29,9 @@ function ItemDetail() {
                 <br />
                 <div style={{ display: "flex", marginBottom: "30px" }}>
                     <button type="button" class="button1" style={{ textAlign: "start", marginRight: "15px" }}>Comprar</button>
-                    <Link to={`/products`} >
+                    <Link to={`/products`} style={{textDecoration:"none"}}>
                         <button type="button" class="button1">
-                            volver a los productos
+                            Volver
                         </button>
                     </Link>
                 </div>

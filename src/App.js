@@ -9,10 +9,10 @@ import "./components/styles/styles.css";
 function App() {
   return (
     <div>
-       <div className="App">
+      <BrowserRouter>
+      <div className="App">
         <NavBar />
       </div>
-      <BrowserRouter>
         <div>
           <Switch>
             <Route exact path="/">
@@ -23,6 +23,9 @@ function App() {
             </Route>
             <Route path="/products/:productId">
               <ItemDetailPromise items={items} />
+            </Route>
+            <Route path="/category/:categoryId">
+            <Products />
             </Route>
             <Route path="/users">
               <Users />

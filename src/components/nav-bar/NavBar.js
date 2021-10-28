@@ -27,15 +27,20 @@ export const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+            <Link to={`/`} style={{textDecoration:"none", marginRight:"10px"}}>
                 Inicio
-              </a>
+              </Link>
 
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/products">
+            <Link to={`/products`} style={{textDecoration:"none", marginRight:"10px"}}>
                 Productos
-              </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={`/category/id`} style={{textDecoration:"none", marginRight:"10px"}}>
+                Categoria 1
+              </Link>
             </li>
 
             <div className="dropdown">
