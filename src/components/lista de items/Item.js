@@ -13,10 +13,10 @@ const items = ({ id, name, description, stock, imgurl, price }) => {
             <br />
             <strong>{name}</strong>
             <br />
-            <strong>price: {price}</strong>
-            <button type="button" class="button1">Comprar</button>
+            <strong>precio: {price}$</strong>
+            <button type="button" class="button1" style={{marginLeft:"auto", marginRight:"auto"}}>Comprar</button>
             <Link to={`/products/${id}`} >
-                <button type="button" class="button1">
+                <button type="button" class="button1" style={{marginLeft:"auto", marginRight:"auto"}}>
                     ver Detalle
                 </button>
             </Link>

@@ -28,7 +28,7 @@ const Promises = ({ items }) => {
         <div style={{backgroundColor: "#E5B299", fontFamily:"Paytone One"}}>
           <h2 class="bestSellers">Mas Vendidos</h2>
             {isLoading && <h3>Loading...</h3>}
-            {isFinished && <h2>Se ha finalizado</h2>}
+            
             <div  style={{marginLeft:"auto",marginRight:"auto",display:"inline-flex"}}>
             {currentItems.map((items) => (
                 <Item key={items.id} {...items} />

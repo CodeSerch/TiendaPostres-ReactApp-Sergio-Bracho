@@ -46,7 +46,7 @@ export const NavBar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown button
+                Menu
               </button>
               <ul
                 className="dropdown-menu"
@@ -54,17 +54,12 @@ export const NavBar = () => {
               >
                 <li>
                   <a className="dropdown-item" href="#">
-                    Action
+                    Encargar
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
+                    Contacto
                   </a>
                 </li>
               </ul>
