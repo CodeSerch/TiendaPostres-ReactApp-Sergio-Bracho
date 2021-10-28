@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { promises } from "../lista de items/promises";
-import Item from "./Item";
-import "../styles/styles.css"; 
+import ItemDetail from "../lista de items/itemDetail";
 
 
-const Promises = ({ items }) => {
+const ItemDetailPromises = ({ items }) => {
     const [message, setMessage] = useState("");
     const [isSuccess, setIsSucces] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -23,20 +22,15 @@ const Promises = ({ items }) => {
             );
         }
     }, [items]);
-
     return (
-        <div style={{backgroundColor: "#E5B299", fontFamily:"arial"}}>
-          <h2 class="bestSellers">Mas Vendidos</h2>
-            {isLoading && <h3>Loading...</h3>}
-            {isFinished && <h2>Se ha finalizado</h2>}
-            <div  style={{marginLeft:"auto",marginRight:"auto",display:"inline-flex"}}>
-            {currentItems.map((items) => (
-                <Item key={items.id} {...items} />
-            ))}
-            </div>
+        <div style={{ backgroundColor: "#E5B299" }}>
             
+            {isLoading && <h3>Loading...</h3>}
+            {isFinished && <div class="card-group">
+                <ItemDetail />
+            </div>}
         </div>
     )
 };
 
-export default Promises;
+export default ItemDetailPromises;

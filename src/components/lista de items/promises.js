@@ -15,7 +15,7 @@ export const promises = (
     itemsResponse
         .then((result) => {
             console.log(result);
-            setMessage(`Result is correct`);
+            setMessage(``);
             setIsSucces(true);
             setCurrentItems(result);
         })

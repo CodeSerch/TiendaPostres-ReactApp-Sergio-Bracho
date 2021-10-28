@@ -1,34 +1,26 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "../styles/styles.css";
 
-const items = ({ id, name, description, stock, imgurl }) => {
+const items = ({ id, name, description, stock, imgurl, price }) => {
     const handleShowProductClick = () => {
     }
 
     return (
-        <Card style={{ width: "18rem", display: "flex", backgroundColor: "#E5B299" }}>
-            <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>
-                    <img src={imgurl} width="250" height="250" style={{borderRadius: 20}} />
-                </Card.Text>
-                <Card.Text>
-                    <strong>id</strong> {id}
-                </Card.Text>
-                <Card.Text>
-                    <strong>description</strong> {description}
-                </Card.Text>
-                <Card.Text>
-                    <strong>Stock</strong> {stock}
-                </Card.Text>
-                <Link to={`/products/${id}`}>
-                    <button type="button">
-                        ver Detalle
-                    </button>
-                </Link>
-            </Card.Body>
-        </Card >
+        <div class="contenedorImagen" style={{paddingLeft:"50px", paddingBottom:"50px"}}>
+            <img src={imgurl} alt="postre2" class="imagen1" />
+            <br />
+            <strong>{name}</strong>
+            <br />
+            <strong>price: {price}</strong>
+            <button type="button" class="button1">Comprar</button>
+            <Link to={`/products/${id}`} >
+                <button type="button" class="button1">
+                    ver Detalle
+                </button>
+            </Link>
+        </div>
     )
 }
 

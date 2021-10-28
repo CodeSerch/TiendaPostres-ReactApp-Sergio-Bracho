@@ -3,38 +3,32 @@ import { useParams } from "react-router-dom"
 import productsData from "../constanteItems"
 import { Card } from "react-bootstrap";
 import "../styles/styles.css";
+import { Link } from "react-router-dom";
 
 function ItemDetail() {
     const { productId } = useParams();
     const thisProduct = productsData.find(prod => prod.id === productId)
-
+    
     return (
-        <div class="flex2">
-            <h1>ItemDetail</h1>
-            <div class="card text-center">
-            <div>
-                <Card border="dark" style={{ width: "18rem", display: "inline" }}>
-                    <Card.Body>
-                        <Card.Title>Product</Card.Title>
-                        <Card.Text>
-                            <strong>id</strong> {thisProduct.id}
-                        </Card.Text>
-                        <Card.Text>
-                            <strong>Name</strong> {thisProduct.name}
-                        </Card.Text>
-                        <Card.Text>
-                            <strong>description</strong> {thisProduct.description}
-                        </Card.Text>
-                        <Card.Text>
-                            <img src={thisProduct.imgurl} width="150" height="150" />
-                        </Card.Text>
-                        <Card.Text>
-                            <strong>Stock</strong> {thisProduct.stock}
-                        </Card.Text>
-                    </Card.Body>
-                </Card >
-            </div>
-        </div>
+        <div class="contenedorImagen" style={{textAlign:"center", marginLeft:"auto",marginRight:"auto", marginTop:"30px"}}>
+            <img src={thisProduct.imgurl} alt="postre2" class="imagen1" />
+            <br />
+            <strong>{thisProduct.name}</strong>
+            <br />
+            <strong>price: {thisProduct.price}</strong>
+            <br />
+            <strong>description: {thisProduct.description}</strong>
+            <br />
+            <strong>id: {thisProduct.id}</strong>
+            <br />
+            <strong>stock: {thisProduct.stock}</strong>
+            <br />
+            <button type="button" class="button1">Comprar</button>
+            <Link to={`/products`} >
+                <button type="button" class="button1" style={{marginBottom:"50px"}}>
+                    volver a los productos
+                </button>
+            </Link>
         </div>
     )
 }
