@@ -70,11 +70,7 @@ export const NavBar = () => {
               </ul>
             </div>
           </ul>
-          <li />
-          <ul />
           <CardWidget />
-          <li />
-          <ul />
         </div>
       </div>
     </nav>
