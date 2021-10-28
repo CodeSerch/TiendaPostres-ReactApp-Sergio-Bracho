@@ -9,7 +9,7 @@ import "./components/styles/styles.css";
 function App() {
   return (
     <div>
-      <div className="App">
+       <div className="App">
         <NavBar />
       </div>
       <BrowserRouter>
@@ -32,7 +32,7 @@ function App() {
       </BrowserRouter>
 
       <footer>&copy; Copyright 2021 Sergio Bracho</footer>
-
+  
     </div>
   );
   function Home() {
