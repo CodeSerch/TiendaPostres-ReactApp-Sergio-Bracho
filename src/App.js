@@ -39,7 +39,7 @@ function App() {
 
     return (
       <div>
-        <div class="primaria">
+        <div class="primaria" style={{fontFamily:"Paytone One"}} >
           <header>
             <h1>Tienda de Postres</h1>
             <img src=""></img>
