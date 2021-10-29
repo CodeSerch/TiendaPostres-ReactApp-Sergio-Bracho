@@ -5,6 +5,7 @@ import items from "./components/constanteItems";
 import { BrowserRouter, Switch, Route, } from "react-router-dom";
 import ItemDetailPromise from "./components/lista de items/itemDetailPromise";
 import "./components/styles/styles.css";
+import CartPage from "./cartpage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/users">
               <Users />
             </Route>
+            <Route path="/cart" component={CartPage} exact />
           </Switch>
         </div>
       </BrowserRouter>

@@ -107,7 +107,7 @@
     padding-right: 15px;
   }
   .button1 {
-    background-color: #4caf50; /* Green */
+    background-color: #5a9bb4; /* Green */
     border: none;
     color: white;
     margin-top: 10px;
@@ -120,7 +120,7 @@
   }
   
   .button1:hover {
-    background-color: #5dc561;
+    background-color: #00ccff;
     color: white;
     transition-duration: 0.3s;
   }
