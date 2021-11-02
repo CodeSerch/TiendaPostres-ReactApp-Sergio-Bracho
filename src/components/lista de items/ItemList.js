@@ -26,6 +26,7 @@ const Promises = ({ items }) => {
 
     return (
         <div style={{backgroundColor: "#FCDEC0", fontFamily:"Paytone One"}}>
+            {message}
           <h2 class="bestSellers">Mas Vendidos</h2>
             {isLoading && <h3>Loading...</h3>}
             

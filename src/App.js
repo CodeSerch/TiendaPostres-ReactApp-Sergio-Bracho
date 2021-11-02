@@ -5,7 +5,8 @@ import items from "./components/constanteItems";
 import { BrowserRouter, Switch, Route, } from "react-router-dom";
 import ItemDetailPromise from "./components/lista de items/itemDetailPromise";
 import "./components/styles/styles.css";
-import CartPage from "./cartpage";
+import CartPage from "./Cart/CartPage";
+import Contador from "./components/contador";
 
 function App() {
   return (
@@ -28,10 +29,7 @@ function App() {
             <Route path="/category/:categoryId">
             <Products />
             </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
-            <Route path="/cart" component={CartPage} exact />
+            <Route path="/cart" component={CartPage} exact/>
           </Switch>
         </div>
       </BrowserRouter>
@@ -66,9 +64,6 @@ function App() {
         <ItemList items={items} />
       </div>
     );
-  }
-  function Users() {
-    return <h2>Users</h2>;
   }
 }
 

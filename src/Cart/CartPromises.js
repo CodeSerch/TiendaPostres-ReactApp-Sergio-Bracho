@@ -1,14 +1,12 @@
-export const promises = (
-    items,
+export const CartPromises = (
     setMessage,
     setIsSucces,
     setIsLoading,
-    setIsFinished,
-    setCurrentItems
+    setIsFinished
 ) => {
     const itemsResponse = new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(items);
+            resolve('resolve');
         }, 1000);
     });
 
@@ -17,7 +15,6 @@ export const promises = (
             console.log(result);
             setMessage(`sucess`);
             setIsSucces(true);
-            setCurrentItems(result);
         })
         .catch((error) => {
             console.log(`Error in progress ${error}`);

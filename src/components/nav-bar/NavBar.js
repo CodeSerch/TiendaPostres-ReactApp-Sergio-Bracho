@@ -70,7 +70,9 @@ export const NavBar = () => {
               </ul>
             </div>
           </ul>
+          <Link to={`/cart`} style={{textDecoration:"none", marginRight:"10px"}}>
           <CardWidget />
+              </Link>
         </div>
       </div>
     </nav>
