@@ -2,13 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
-const dataFixed = {
-    id:'0',
-    name:"Carrito Vacio",
-    description:"descripcion vacia",
-    stock:'stock vacio',
-    imgurl:'sin imagen'
-}
+const dataFixed = []
 
 export const DataProvider = ({children}) => {
 
