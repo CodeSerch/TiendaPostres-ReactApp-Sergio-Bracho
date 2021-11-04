@@ -6,7 +6,10 @@ const CartPage = () => {
     const { cartItems } = useContext(CartContext);
 
     return (
-        <div style={{ marginTop: "30px", display:"inline-flex" }}>
+        <div>
+            <h1>{JSON.stringify(cartItems)}</h1>
+        </div>
+        /*<div style={{ marginTop: "30px", display:"inline-flex" }}>
             <div>
                 <img src={cartItems.imgurl} alt="postre2" style={{ margin:"50px", width: "100px", height: "100px" }} />
             </div>
@@ -23,7 +26,7 @@ const CartPage = () => {
                 <strong>stock: {cartItems.stock}</strong>
                 <br />
             </div>
-        </div>
+        </div>*/
     )
 }
 

@@ -6,17 +6,21 @@ import { Link } from "react-router-dom";
 import Contador from "../contador";
 import { useEffect, useState, useContext } from "react";
 import { CartContext } from "../../context/cartContext";
+import items from "./Item";
 
 
 function ItemDetail() {
     
-    const { setCartItems } = useContext(CartContext);
+    const { cartItems, setCartItems } = useContext(CartContext);
     const { productId } = useParams();
     const thisProduct = productsData.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
-
-        setCartItems(thisProduct);
+        console.log(cartItems);
+        const itemsArray = new Array;
+        itemsArray.push(cartItems)
+        itemsArray.push(thisProduct)
+        setCartItems(itemsArray);
 
         if (isAdded){
             setIsAdded(false);
