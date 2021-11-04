@@ -6,8 +6,23 @@ const CartPage = () => {
     const { cartItems } = useContext(CartContext);
 
     return (
-        <div>
-            <h1>{JSON.stringify(cartItems)}</h1>
+        <div style={{ marginLeft:"25px"}}>
+            <h1>Lista de productos</h1>
+            {cartItems.map(items => (
+                    <div style={{ marginTop: "30px", display:"inline-flex" }}>
+                    <div>
+                        <img src={items.imgurl} alt="postre2" style={{ margin:"20px", width: "100px", height: "100px" }} />
+                    </div>
+                    <div>
+                        <br />
+                        <strong >{items.name}</strong>
+                        <br />
+                        <strong>precio: {items.price}</strong>
+                        <br />
+                        <strong>id: {items.id}</strong>
+                    </div>
+                </div>
+            ))}
         </div>
         /*<div style={{ marginTop: "30px", display:"inline-flex" }}>
             <div>

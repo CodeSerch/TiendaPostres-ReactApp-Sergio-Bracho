@@ -3,10 +3,8 @@ import { useParams } from "react-router-dom"
 import productsData from "../constanteItems"
 import "../styles/styles.css";
 import { Link } from "react-router-dom";
-import Contador from "../contador";
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { CartContext } from "../../context/cartContext";
-import items from "./Item";
 
 
 function ItemDetail() {
