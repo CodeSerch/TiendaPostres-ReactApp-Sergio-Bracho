@@ -7,9 +7,11 @@ import ItemDetailPromise from "./components/lista de items/itemDetailPromise";
 import "./components/styles/styles.css";
 import CartPage from "./Cart/CartPage";
 import Contador from "./components/contador";
+import { DataProvider } from "./context/cartContext";
 
 function App() {
   return (
+    <DataProvider>
     <div>
       <BrowserRouter>
       <div className="App">
@@ -37,6 +39,7 @@ function App() {
       <footer>&copy; Copyright 2021 Sergio Bracho</footer>
   
     </div>
+    </DataProvider>
   );
   function Home() {
 
