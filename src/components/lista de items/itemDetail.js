@@ -57,7 +57,7 @@ function ItemDetail() {
                     </Link>
                 </div>
                 <div>
-                    {isAdded ? (<div>is added: <Contador></Contador></div>) : <h1>is not added</h1>}
+                    {isAdded ? (<div></div>) : <h1>se añadio un producto</h1>}
                 </div>
                 
             </div>
