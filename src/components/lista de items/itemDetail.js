@@ -5,6 +5,7 @@ import "../styles/styles.css";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { CartContext } from "../../context/cartContext";
+import Contador from "../contador";
 
 
 function ItemDetail() {
@@ -56,7 +57,7 @@ function ItemDetail() {
                     </Link>
                 </div>
                 <div>
-                    {isAdded ? (<div></div>) : <h1>se añadio un producto</h1>}
+                    {isAdded ? <div><Contador/></div> : <h1>se añadio un producto</h1>}
                 </div>
                 
             </div>
