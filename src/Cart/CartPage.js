@@ -20,6 +20,8 @@ const CartPage = () => {
                         <strong>precio: {items.price}</strong>
                         <br />
                         <strong>id: {items.id}</strong>
+                        <br />
+                        <strong>Cantidad {items.cantidad}</strong>
                     </div>
                 </div>
             ))}

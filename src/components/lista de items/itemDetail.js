@@ -15,7 +15,15 @@ function ItemDetail() {
     const thisProduct = productsData.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
-        cartItems.push(thisProduct)
+        const cartItem = cartItems.find(cart => cart.id === productId);
+        if(cartItem) {
+            console.log(cartItem);
+            cartItem.cantidad++;
+            console.log(cartItem.cantidad);
+          }
+          else {
+            cartItems.push(thisProduct);
+          }
         setCartItems(cartItems);
 
         if (isAdded){

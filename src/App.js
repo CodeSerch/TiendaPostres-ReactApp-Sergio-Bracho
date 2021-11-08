@@ -47,7 +47,7 @@ function App() {
       <div>
         <div class="primaria" style={{fontFamily:"Paytone One"}} >
           <header>
-            <h1>Tienda de Postres</h1>
+            <h1 class="titulo1">Tienda de Postres</h1>
             <img src=""></img>
           </header>
         </div>
@@ -60,7 +60,7 @@ function App() {
       <div className="App">
         <div class="primaria">
           <header>
-            <h1>Tienda de Postres</h1>
+            <h1 class="titulo1">Tienda de Postres</h1>
             <img src=""></img>
           </header>
         </div>

@@ -44,9 +44,10 @@
     
     font-size: 64px;
     font-weight: bolder;
-    color: rgb(255, 255, 255);
-    text-shadow: 3px 3px 4px black;
     margin: 0px;
+    color: #00ffd5;
+    font-family: sans-serif;
+    text-shadow: 2px 2px 3px #000000;
   }
   
   h2.bestSellers {
@@ -88,8 +89,9 @@
   h1 {
     
     font-size: 50px;
-    color: rgb(255, 218, 6);
-    text-shadow: 3px 3px 4px black;
+    color: #00ffd5;
+    font-family: sans-serif;
+    text-shadow: 2px 2px 3px #000000;
   }
   
   nav.navegacion {
