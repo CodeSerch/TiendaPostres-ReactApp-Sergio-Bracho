@@ -34,6 +34,10 @@ function ItemDetail() {
             console.log(isAdded);
         }
       }
+      const removeId = () =>{
+        const newArray = cartItems.filter(cartItems => cartItems.id != productId );
+        setCartItems(newArray);
+      }
     return (
         <div style={{ marginLeft: "auto", marginRight: "auto", marginTop: "30px" }}>
             <div class="contenedorImagen" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
@@ -67,7 +71,6 @@ function ItemDetail() {
                 <div>
                     {isAdded ? <div><Contador/></div> : <h1>se añadio un producto</h1>}
                 </div>
-                
             </div>
 
         </div>
