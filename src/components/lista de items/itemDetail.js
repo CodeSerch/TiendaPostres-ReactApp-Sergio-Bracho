@@ -61,19 +61,21 @@ function ItemDetail() {
                 <strong>stock: {thisProduct.stock}</strong>
                 <br />
                 <div style={{ display: "flex", marginBottom: "30px" }}>
-                    <button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
-                        Agregar al Carrito
-
-
+                    {isAdded ? <div>
+                        <button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
+                            Agregar al Carrito
+                        </button>
+                        <Contador />
+                    </div> : <div><button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
+                        añadir mas productos
                     </button>
+                        se añadieron productos </div>}
+
                     <Link to={`/products`} style={{ textDecoration: "none" }}>
                         <button type="button" class="button1">
                             Volver
                         </button>
                     </Link>
-                </div>
-                <div>
-                    {isAdded ? <div><Contador  /></div> : <h1>se añadieron productos</h1>}
                 </div>
             </div>
 
