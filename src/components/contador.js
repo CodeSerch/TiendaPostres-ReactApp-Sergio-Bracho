@@ -10,7 +10,7 @@ const Contador = ({ }) => {
   }
   return (
     <div>
-      <p>Numero de Clicks: {count}</p>
+      <p>Cantidad a agregar: {count}</p>
       <button onClick={increment}>
         Click
       </button>

@@ -9,39 +9,43 @@ import Contador from "../contador";
 
 
 function ItemDetail() {
-    
+
     const { cartItems, setCartItems } = useContext(CartContext);
+    const { cantidad, setCantidad } = useContext(CartContext);
     const { productId } = useParams();
     const thisProduct = productsData.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
-        const cartItem = cartItems.find(cart => cart.id === productId);
-        if(cartItem) {
-            console.log(cartItem);
-            cartItem.cantidad++;
-            console.log(cartItem.cantidad);
-          }
-          else {
-            cartItems.push(thisProduct);
-          }
-        setCartItems(cartItems);
 
-        if (isAdded){
+        if (isAdded) {
             setIsAdded(false);
             console.log(isAdded);
+            const cartItem = cartItems.find(cart => cart.id === productId);
+            if (cartItem) {
+                console.log(cartItem);
+                cartItem.cantidad++;
+                console.log(cartItem.cantidad);
+            }
+            else {
+                thisProduct.cantidad = 1;
+                cartItems.push(thisProduct);
+            }
+            setCartItems(cartItems);
+            setCantidad(cantidad + 1);
         } else {
             setIsAdded(true);
             console.log(isAdded);
         }
-      }
-      const removeId = () =>{
-        const newArray = cartItems.filter(cartItems => cartItems.id != productId );
+
+    }
+    const removeId = () => {
+        const newArray = cartItems.filter(cartItems => cartItems.id != productId);
         setCartItems(newArray);
-      }
+    }
     return (
         <div style={{ marginLeft: "auto", marginRight: "auto", marginTop: "30px" }}>
             <div class="contenedorImagen" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
-                <img src={thisProduct.imgurl} alt="postre2" class="imagen1" style={{ width: "300px", height: "300px" }} />
+                <img src={thisProduct.imgurl} alt="postre2" class="imagen1" style={{ width: "200px", height: "200px" }} />
             </div>
             <div>
 
@@ -69,7 +73,7 @@ function ItemDetail() {
                     </Link>
                 </div>
                 <div>
-                    {isAdded ? <div><Contador/></div> : <h1>se añadio un producto</h1>}
+                    {isAdded ? <div><Contador  /></div> : <h1>se añadieron productos</h1>}
                 </div>
             </div>
 

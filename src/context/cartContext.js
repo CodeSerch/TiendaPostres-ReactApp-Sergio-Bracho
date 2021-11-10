@@ -7,12 +7,13 @@ const dataFixed = []
 export const DataProvider = ({children}) => {
 
     const [cartItems, setCartItems] = useState(dataFixed);
-
-
+    const [cantidad, setCantidad] = useState(0);
     return (
         <CartContext.Provider value={{
             cartItems,
-            setCartItems
+            setCartItems,
+            cantidad,
+            setCantidad
         }}>
             {children}
         </CartContext.Provider>
