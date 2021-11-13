@@ -7,6 +7,18 @@ import { CartContext } from "../context/cartContext";
 const CartPage = () => {
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
+    const calcularTotal = () => {   
+        let suma = 0    ;
+        if(cantidad >= 1){
+            for (let i = 0; i < cartItems.length; i++){
+                suma = suma + (parseFloat(cartItems[i].price) * (parseFloat(cartItems[0].cantidad)));
+            }
+            console.log("suma Total:" + suma);
+        }
+        return suma;
+    }
+    const [sumaTotal, setSumaTotal] = useState(calcularTotal);
+
 
     const clearCart = () => {
         cartItems.forEach((cartItems) => {
@@ -72,6 +84,7 @@ const CartPage = () => {
                 </div>
             ))}
             <br />
+            <h1>Total del Carrito: {sumaTotal}</h1> 
             <div style={{ marginBottom: "30px", display: "flex" }}>
                 <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>limpiar carrito</button>
 
