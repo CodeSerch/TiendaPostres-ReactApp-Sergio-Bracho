@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 
-const Contador = ({ }) => {
-  const [count, setCount] = useState(0);
+const Contador = ({count, setCount}) => {
   const increment = () => {
     setCount(count + 1);
   }
   const Reset = () => {
-    setCount(0);
+    setCount(1);
   }
   return (
     <div>

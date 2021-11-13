@@ -7,11 +7,11 @@ import { CartContext } from "../context/cartContext";
 const CartPage = () => {
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
-    const calcularTotal = () => {   
-        let suma = 0    ;
-        if(cantidad >= 1){
-            for (let i = 0; i < cartItems.length; i++){
-                suma = suma + (parseFloat(cartItems[i].price) * (parseFloat(cartItems[0].cantidad)));
+    const calcularTotal = () => {
+        let suma = 0;
+        if (cantidad >= 1) {
+            for (let i = 0; i < cartItems.length; i++) {
+                suma = suma + (parseFloat(cartItems[i].price) * (parseFloat(cartItems[i].cantidad)));
             }
             console.log("suma Total:" + suma);
         }
@@ -24,7 +24,7 @@ const CartPage = () => {
         cartItems.forEach((cartItems) => {
             console.log(cartItems.name + ", cantidad a eliminar: " + cartItems.cantidad)
             cartItems.cantidad = 0
-            console.log(cartItems.name + ": " +cartItems.cantidad)
+            console.log(cartItems.name + ": " + cartItems.cantidad)
         });
         setCartItems([]);
         alert("se limpio el carrito")
@@ -36,17 +36,17 @@ const CartPage = () => {
         //Encuentro el id del elemento dentro de mi array del contexto de carrito
         const found = cartItems.find(cartItems => cartItems.id === id);
         const index = cartItems.findIndex(item => item.id === id);
-        
+
         //Le resto la cantidad de mi producto seleccionado al context de cantidad
         console.log("cantidad del item con id: " + id + " es igual a: " + found.cantidad);
-        setCantidad(cantidad-found.cantidad);
+        setCantidad(cantidad - found.cantidad);
 
         //Reseteo la cantidad de mi elemento dentro del array de cart context
-        console.log("vaciando cantidad del item con id: " + id + " con una cantidad de: "+ found.cantidad);
+        console.log("vaciando cantidad del item con id: " + id + " con una cantidad de: " + found.cantidad);
         cartItems[index].cantidad = 0;
         console.log("cantidad nueva es de: " + cartItems[index].cantidad)
 
-        
+
         const newArray = cartItems.filter(cartItems => cartItems.id != id);
 
         console.log("newArray = " + JSON.stringify(newArray));
@@ -84,7 +84,7 @@ const CartPage = () => {
                 </div>
             ))}
             <br />
-            <h1>Total del Carrito: {sumaTotal}</h1> 
+            <h1>Total del Carrito: {sumaTotal}</h1>
             <div style={{ marginBottom: "30px", display: "flex" }}>
                 <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>limpiar carrito</button>
 

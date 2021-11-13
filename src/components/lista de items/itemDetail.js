@@ -10,30 +10,35 @@ import Contador from "../contador";
 
 function ItemDetail() {
 
+    const [count, setCount] = useState(1);
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
     const { productId } = useParams();
     const thisProduct = productsData.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
-
         if (isAdded) {
             setIsAdded(false);
             console.log(isAdded);
             const cartItem = cartItems.find(cart => cart.id === productId);
             if (cartItem) {
                 console.log(cartItem);
-                cartItem.cantidad++;
+                if (count > 1) {
+                    cartItem.cantidad = cartItem.cantidad + count;
+                } else {
+                    cartItem.cantidad++;
+                }
                 console.log(cartItem.cantidad);
             }
             else {
-                thisProduct.cantidad = 1;
+                thisProduct.cantidad = count;
                 cartItems.push(thisProduct);
             }
             setCartItems(cartItems);
-            setCantidad(cantidad + 1);
+            setCantidad(cantidad + (count));
         } else {
             setIsAdded(true);
+            setCount(1);
             console.log(isAdded);
         }
 
@@ -65,17 +70,24 @@ function ItemDetail() {
                         <button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
                             Agregar al Carrito
                         </button>
-                        <Contador />
-                    </div> : <div><button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
-                        añadir mas productos
-                    </button>
-                        se añadieron productos </div>}
+                        <Contador count={count} setCount={setCount} />
+                    </div> : <div>
 
-                    <Link to={`/products`} style={{ textDecoration: "none" }}>
-                        <button type="button" class="button1">
-                            Volver
+                        <Link to={`/cart`} style={{ textDecoration: "none" }}>
+                            <button type="button" class="button1">
+                                Finalizar compra
+                            </button>
+                        </Link>
+
+                        <button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
+                            Añadir mas
                         </button>
-                    </Link>
+                        <Link to={`/products`} style={{ textDecoration: "none" }}>
+                            <button type="button" class="button1">
+                                Volver
+                            </button>
+                        </Link>
+                        se añadieron {count}  productos {count} </div>}
                 </div>
             </div>
 
