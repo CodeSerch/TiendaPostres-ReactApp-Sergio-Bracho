@@ -1,6 +1,5 @@
 import React from "react"
 import { useParams } from "react-router-dom"
-import productsData from "../constanteItems"
 import "../styles/styles.css";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
@@ -8,13 +7,13 @@ import { CartContext } from "../../context/cartContext";
 import Contador from "../contador";
 
 
-function ItemDetail() {
+function ItemDetail({items}) {
 
     const [count, setCount] = useState(1);
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
     const { productId } = useParams();
-    const thisProduct = productsData.find(prod => prod.id === productId);
+    const thisProduct = items.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
         if (isAdded) {

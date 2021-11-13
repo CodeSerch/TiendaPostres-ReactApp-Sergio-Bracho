@@ -27,7 +27,7 @@ const ItemDetailPromises = ({ items }) => {
             
             {isLoading && <h3>Loading...</h3>}
             {isFinished && <div class="card-group">
-                <ItemDetail />
+                <ItemDetail items={items} />
             </div>}
         </div>
     )
