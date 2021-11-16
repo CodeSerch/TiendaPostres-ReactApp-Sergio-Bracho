@@ -6,6 +6,15 @@ import { useState, useContext } from "react";
 import { CartContext } from "../../context/cartContext";
 import Contador from "../contador";
 
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs, doc, getDocFromCache, query, where } from 'firebase/firestore/lite';
+
+// TODO: Replace the following with your app's Firebase project configuration
+import firebaseConfig from "../../firebaseConfig";
+import { get } from "@firebase/database";
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 function ItemDetail({items}) {
 
@@ -13,7 +22,9 @@ function ItemDetail({items}) {
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
     const { productId } = useParams();
-    const thisProduct = items.find(prod => prod.id === productId);
+    console.log("items: " + items)
+    let thisProduct = items[productId];
+    //const thisProduct = items.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
         if (isAdded) {

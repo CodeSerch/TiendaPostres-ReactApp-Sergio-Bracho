@@ -9,7 +9,7 @@ export const promises = (
     const itemsResponse = new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(items);
-        }, 500);
+        }, 2000);
     });
 
     itemsResponse
