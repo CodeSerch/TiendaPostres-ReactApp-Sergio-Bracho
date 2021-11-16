@@ -19,11 +19,19 @@ const db = getFirestore(app);
 function ItemDetail({items}) {
 
     const [count, setCount] = useState(1);
+    const [thisProduct, setProduct] = useState([]);
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
     const { productId } = useParams();
-    console.log("items: " + items)
-    let thisProduct = items[productId];
+
+    items.then((value) => {
+        console.log("items.then")
+        setProduct(value[productId-1]);
+      });
+
+
+    //console.log("items: " + itemsResponse);
+    
     //const thisProduct = items.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {

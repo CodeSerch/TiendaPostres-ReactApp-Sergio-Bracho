@@ -24,7 +24,7 @@ const ItemDetailPromises = ({ items }) => {
     }, [items]);
     return (
         <div style={{ backgroundColor: "#E5B299" }}>
-            
+
             {isLoading && <h3>Loading...</h3>}
             {isFinished && <div class="card-group">
                 <ItemDetail items={items} />
