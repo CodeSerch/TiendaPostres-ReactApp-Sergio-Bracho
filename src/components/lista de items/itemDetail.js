@@ -38,7 +38,7 @@ function ItemDetail({items}) {
         if (isAdded) {
             setIsAdded(false);
             console.log(isAdded);
-            const cartItem = cartItems.find(cart => cart.id === productId);
+            const cartItem = cartItems.find(cart => cart.id == productId);
             if (cartItem) {
                 console.log(cartItem);
                 if (count > 1) {
