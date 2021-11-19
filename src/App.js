@@ -78,7 +78,7 @@ function App() {
                 <Categorys />
               </Route>
               <Route path="/category/:categoryId">
-                <Category1 />
+                <Category/>
               </Route>
               <Route path="/cart" component={CartPage} exact />
             </Switch>
@@ -118,15 +118,10 @@ function App() {
       </div>
     );
   }
-  function Category1() {
+  function Category() {
     const { categoryId } = useParams();
-    const category1 = () => {
-      if (items.length == 0) {
-        console.log("no items")
-      } else {
-        return items.filter(item => item.id == categoryId);
-      }
-    }
+    const categoryItems = items.filter(item => item.category == categoryId);
+    
     return (
       <div className="App">
         <div class="primaria">
@@ -135,13 +130,12 @@ function App() {
             <img src=""></img>
           </header>
         </div>
-        <ItemList items={category1} />
+        <ItemList items={categoryItems} />
       </div>
     );
   }
   function Categorys() {
     return (
-
       <div className="App">
         <div class="primaria">
           <header>
