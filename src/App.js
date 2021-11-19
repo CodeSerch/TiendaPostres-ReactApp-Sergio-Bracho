@@ -120,8 +120,14 @@ function App() {
   }
   function Category() {
     const { categoryId } = useParams();
-    const categoryItems = items.filter(item => item.category == categoryId);
-    
+    const categoryItems = () => {
+      if (items.length == 0) {
+        console.log("no items")
+      } else {
+        console.log("filtrando..")
+        return items.filter(item => item.category == categoryId);
+      }
+    }
     return (
       <div className="App">
         <div class="primaria">
