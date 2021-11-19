@@ -2,7 +2,7 @@ import "./App.css";
 import NavBar from "./components/nav-bar/NavBar";
 import ItemList from "./components/lista de items/ItemList";
 //import items from "./components/constanteItems";
-import { BrowserRouter, Switch, Route, } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useParams, Link } from "react-router-dom";
 import ItemDetail from "./components/lista de items/itemDetail";
 import "./components/styles/styles.css";
 import CartPage from "./Cart/CartPage";
@@ -33,28 +33,28 @@ const productosCol = collection(db, 'productos');
 
 
 //const arrayDeProductos = getProductos(db);
-//const category1 
 
 
 function App() {
   const [items, setItems] = useState(0);
+  //let categoryId = 1;
 
-useEffect(() => {
-  //const productoSnapshot = getDocs(productosCol);
-  getDocs(productosCol).then((querySnapshot) => {
-    if (querySnapshot.size === 0) {
-      console.log("no results")
-    }
-    setItems(querySnapshot.docs.map(doc => doc.data()));
-  }).catch((error) => {
-    console.log("error searching  ", error);
-  }).finally(() => {
-    console.log("loading false");
-  });
-}, []);
+  useEffect(() => {
+    //const productoSnapshot = getDocs(productosCol);
+    getDocs(productosCol).then((querySnapshot) => {
+      if (querySnapshot.size === 0) {
+        console.log("no results")
+      }
+      setItems(querySnapshot.docs.map(doc => doc.data()));
+    }).catch((error) => {
+      console.log("error searching  ", error);
+    }).finally(() => {
+      console.log("loading false");
+    });
+  }, []);
 
 
-console.log("items=> " + items)
+  console.log("items=> " + items)
 
   return (
     <DataProvider>
@@ -73,6 +73,9 @@ console.log("items=> " + items)
               </Route>
               <Route path="/products/:productId">
                 <ItemDetail items={items} />
+              </Route>
+              <Route path="/categorys/">
+                <Categorys />
               </Route>
               <Route path="/category/:categoryId">
                 <Category1 />
@@ -116,15 +119,44 @@ console.log("items=> " + items)
     );
   }
   function Category1() {
+    const { categoryId } = useParams();
+    const category1 = () => {
+      if (items.length == 0) {
+        console.log("no items")
+      } else {
+        return items.filter(item => item.id == categoryId);
+      }
+    }
     return (
       <div className="App">
         <div class="primaria">
           <header>
-            <h1 class="titulo1">Category1</h1>
+            <h1 class="titulo1">Categoria {categoryId}</h1>
             <img src=""></img>
           </header>
         </div>
-        <ItemList items={items} />
+        <ItemList items={category1} />
+      </div>
+    );
+  }
+  function Categorys() {
+    return (
+
+      <div className="App">
+        <div class="primaria">
+          <header>
+            <h1 class="titulo1">Tienda de Postres</h1>
+            <img src=""></img>
+          </header>
+        </div>
+        <div style={{ textAlign:"center", margin:"100px" }}>
+          <Link to={`/category/${1}`} style={{ margin:"50px", padding:"50px", backgroundColor:"#E5B299", borderRadius:"30px", fontSize:"30px"}}>
+            Categoria 1
+          </Link>
+          <Link to={`/category/${2}`} style={{ margin:"50px", padding:"50px", backgroundColor:"#E5B299", borderRadius:"30px", fontSize:"30px"}}>
+            Categoria 2
+          </Link>
+        </div>
       </div>
     );
   }

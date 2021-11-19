@@ -38,8 +38,8 @@ export const NavBar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={`/category/id`} style={{textDecoration:"none", marginRight:"10px"}}>
-                Categoria 1
+              <Link to={`/categorys`} style={{textDecoration:"none", marginRight:"10px"}}>
+                Categorias
               </Link>
             </li>
 
