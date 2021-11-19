@@ -8,13 +8,13 @@ const Contador = ({count, setCount}) => {
     setCount(1);
   }
   return (
-    <div>
-      <p>Cantidad a agregar: {count}</p>
-      <button onClick={increment}>
-        Click
+    <div style={{display:"flex", textAlign:"center",alignItems:"center", justifyContent:"center"}}>
+      <p style={{marginBottom:"0px"}}>{count}</p>
+      <button onClick={increment}  style={{backgroundColor:"#5a9bb4", padding:"6px"}}>
+        +
       </button>
-      <button onClick={Reset}>
-        Resetear
+      <button onClick={Reset} style={{backgroundColor:"#5a9bb4", padding:"6px"}}>
+        -
       </button>
     </div>
   );

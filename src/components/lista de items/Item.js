@@ -13,7 +13,7 @@ const items = ({ id, name, description, stock, imgurl, price }) => {
         <div class="contenedorImagen" style={{paddingLeft:"50px", paddingBottom:"50px"}}>
             <img src={imgurl} alt="postre2" class="imagen1" />
             <br />
-            <strong>{name}</strong>
+            <strong style={{fontSize:"26px"}}>{name}</strong>
             <br />
             <strong style={{color:"gray"}}>precio: {price}$</strong>
             <Link to={`/products/${id}`} style={{textDecoration:"none"}}>

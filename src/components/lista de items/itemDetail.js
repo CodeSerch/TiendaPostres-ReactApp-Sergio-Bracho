@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { CartContext } from "../../context/cartContext";
 import Contador from "../contador";
-
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, doc, getDocFromCache, query, where } from 'firebase/firestore/lite';
 
@@ -16,22 +15,15 @@ import { get } from "@firebase/database";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-function ItemDetail({items}) {
-
+function ItemDetail({ items }) {
+    const { productId } = useParams();
     const [count, setCount] = useState(1);
-    const [thisProduct, setProduct] = useState([]);
+    const [thisProduct, setProduct] = useState(items[productId-1]);
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
-    const { productId } = useParams();
-
-    items.then((value) => {
-        console.log("items.then")
-        setProduct(value[productId-1]);
-      });
-
 
     //console.log("items: " + itemsResponse);
-    
+
     //const thisProduct = items.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
@@ -65,50 +57,52 @@ function ItemDetail({items}) {
         const newArray = cartItems.filter(cartItems => cartItems.id != productId);
         setCartItems(newArray);
     }
+
     return (
-        <div style={{ marginLeft: "auto", marginRight: "auto", marginTop: "30px" }}>
-            <div class="contenedorImagen" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
-                <img src={thisProduct.imgurl} alt="postre2" class="imagen1" style={{ width: "200px", height: "200px" }} />
-            </div>
-            <div>
+        <div style={{ backgroundColor: "#FCDEC0", fontFamily: "Paytone One" }} class="card-group">
+            <div style={{ marginLeft: "auto", marginRight: "auto", marginTop: "30px" }}>
+                <div class="contenedorImagen" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
+                    <img src={thisProduct.imgurl} alt="postre2" class="imagen1" style={{ width: "200px", height: "200px" }} />
+                </div>
+                <div style={{textAlign:"center"}}>
 
-                <br />
-                <strong >{thisProduct.name}</strong>
-                <br />
-                <strong>precio: {thisProduct.price}</strong>
-                <br />
-                <strong>descripcion: {thisProduct.description}</strong>
-                <br />
-                <strong>id: {thisProduct.id}</strong>
-                <br />
-                <strong>stock: {thisProduct.stock}</strong>
-                <br />
-                <div style={{ display: "flex", marginBottom: "30px" }}>
-                    {isAdded ? <div>
-                        <button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
-                            Agregar al Carrito
-                        </button>
-                        <Contador count={count} setCount={setCount} />
-                    </div> : <div>
-
-                        <Link to={`/cart`} style={{ textDecoration: "none" }}>
-                            <button type="button" class="button1">
-                                Finalizar compra
+                    <br />
+                    <strong >{thisProduct.name}</strong>
+                    <br />
+                    <strong>precio: </strong><font color="#808080">{thisProduct.price}</font>
+                    <br />
+                    <strong>stock: </strong><font color="#808080">{thisProduct.stock}</font>
+                    <br />
+                    <strong>id: </strong><font color="#808080">{thisProduct.id}</font>
+                    <br />
+                    <strong>descripcion: </strong><font color="#808080">{thisProduct.description}</font>
+                    <br />
+                    <div style={{  marginBottom: "30px" }}>
+                        {isAdded ? <div style={{display: "flex"}}>
+                            <button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
+                                Agregar al Carrito
                             </button>
-                        </Link>
+                            <Contador count={count} setCount={setCount} />
+                        </div> : <div style={{display: "flex", flexDirection:"column",alignItems:"center"}}>
 
-                        <button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
-                            Añadir mas
-                        </button>
-                        <Link to={`/products`} style={{ textDecoration: "none" }}>
-                            <button type="button" class="button1">
-                                Volver
+                            <Link to={`/cart`} style={{ textDecoration: "none" }}>
+                                <button type="button" class="button1">
+                                    Finalizar compra
+                                </button>
+                            </Link>
+
+                            <button type="button" class="button1" onClick={Added} style={{ textAlign: "start"}}>
+                                Añadir mas
                             </button>
-                        </Link>
-                        se añadieron {count}  productos {count} </div>}
+                            <Link to={`/products`} style={{ textDecoration: "none" }}>
+                                <button type="button" class="button1">
+                                    Volver
+                                </button>
+                            </Link>
+                            se añadieron {count}  productos {count} </div>}
+                    </div>
                 </div>
             </div>
-
         </div>
     )
 }
