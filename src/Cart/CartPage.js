@@ -54,7 +54,7 @@ const CartPage = () => {
     }
 
     return (
-        <div style={{ marginLeft: "25px" }}>
+        <div style={{ display:"flex", flexDirection:"column", alignItems:"center"}}>
             <h1>Lista de productos</h1>
             {(cartItems.length > 0) ? <h1>hay productos</h1> : <div>el carrito esta vacio!<Link to={`/products`} style={{ textDecoration: "none" }}>
                 <button type="button" class="button1">
