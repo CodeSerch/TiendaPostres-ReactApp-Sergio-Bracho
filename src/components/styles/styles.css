@@ -37,7 +37,7 @@
   /* Style the navbar */
   
   body {
-    background-color: #FCDEC0;
+    background-color: #ffffff;
   }
   
   h1.titulo1 {
@@ -45,9 +45,9 @@
     font-size: 64px;
     font-weight: bolder;
     margin: 0px;
-    color: #00ffd5;
+    color: #252525;
     font-family: sans-serif;
-    text-shadow: 2px 2px 3px #000000;
+    text-shadow: 1px 1px 3px #000000;
   }
   
   h2.bestSellers {
@@ -62,8 +62,9 @@
   img.imagen1 {
     width: 200px;
     height: 200px;
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.596);
-    border-radius: 10%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.596);
+    border-radius: 5%;
+    justify-content: center;
   }
   h2 {
     
@@ -284,14 +285,12 @@
     margin:50px;
     padding: 50px;
     border-color: #4caf50;
-    border: solid 50px rgb(0, 0, 0);
     padding-left: 50px;
     }
   
     img.imagen1 {
       width: 80px;
       height: 80px;
-      box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.596);
       border-radius: 10%;
     }
   

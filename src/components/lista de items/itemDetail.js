@@ -59,7 +59,7 @@ function ItemDetail({ items }) {
     }
 
     return (
-        <div style={{ backgroundColor: "#FCDEC0", fontFamily: "Paytone One" }} class="card-group">
+        <div style={{ backgroundColor: "white", fontFamily: "Paytone One" }} class="card-group">
             <div style={{ marginLeft: "auto", marginRight: "auto", marginTop: "30px" }}>
                 <div class="contenedorImagen" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
                     <img src={thisProduct.imgurl} alt="postre2" class="imagen1" style={{ width: "200px", height: "200px" }} />

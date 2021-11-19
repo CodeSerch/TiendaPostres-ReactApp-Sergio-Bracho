@@ -78,7 +78,7 @@ function App() {
                 <Categorys />
               </Route>
               <Route path="/category/:categoryId">
-                <Category/>
+                <Category />
               </Route>
               <Route path="/cart" component={CartPage} exact />
             </Switch>
@@ -97,7 +97,7 @@ function App() {
       <div>
         <div class="primaria" style={{ fontFamily: "Paytone One" }} >
           <header>
-            <h1 class="titulo1">Tienda de Postres</h1>
+            <h1 class="titulo1" style={{ color: "white" }}>Tienda de Postres</h1>
             <img src=""></img>
           </header>
         </div>
@@ -108,12 +108,7 @@ function App() {
     return (
 
       <div className="App">
-        <div class="primaria">
-          <header>
-            <h1 class="titulo1">Tienda de Postres</h1>
-            <img src=""></img>
-          </header>
-        </div>
+        <h1 class="titulo1">Productos</h1>
         <ItemList items={items} />
       </div>
     );
@@ -130,7 +125,7 @@ function App() {
     }
     return (
       <div className="App">
-        <div class="primaria">
+        <div>
           <header>
             <h1 class="titulo1">Categoria {categoryId}</h1>
             <img src=""></img>
@@ -143,17 +138,11 @@ function App() {
   function Categorys() {
     return (
       <div className="App">
-        <div class="primaria">
-          <header>
-            <h1 class="titulo1">Tienda de Postres</h1>
-            <img src=""></img>
-          </header>
-        </div>
-        <div style={{ textAlign:"center", margin:"100px" }}>
-          <Link to={`/category/${1}`} style={{ margin:"50px", padding:"50px", backgroundColor:"#E5B299", borderRadius:"30px", fontSize:"30px"}}>
+        <div style={{ textAlign: "center", margin: "100px" }}>
+          <Link to={`/category/${1}`} style={{ margin: "50px", padding: "50px", backgroundColor: "#E5B299", borderRadius: "30px", fontSize: "30px" }}>
             Categoria 1
           </Link>
-          <Link to={`/category/${2}`} style={{ margin:"50px", padding:"50px", backgroundColor:"#E5B299", borderRadius:"30px", fontSize:"30px"}}>
+          <Link to={`/category/${2}`} style={{ margin: "50px", padding: "50px", backgroundColor: "#E5B299", borderRadius: "30px", fontSize: "30px" }}>
             Categoria 2
           </Link>
         </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { promises } from "../lista de items/promises";
 import Item from "./Item";
-import "../styles/styles.css"; 
+import "../styles/styles.css";
 
 
 const Promises = ({ items }) => {
@@ -25,17 +25,15 @@ const Promises = ({ items }) => {
     }, [items]);
 
     return (
-        <div style={{backgroundColor: "#FCDEC0", fontFamily:"Paytone One"}}>
-            {message}
-          <h2 class="bestSellers">Mas Vendidos</h2>
+        <div style={{ fontFamily: "Paytone One" }}>
             {isLoading && <h3>Loading...</h3>}
-            
-            <div  style={{marginLeft:"auto",marginRight:"auto",display:"inline-flex"}}>
-            {currentItems.map((items) => (
-                <Item key={items.id} {...items} />
-            ))}
+        <div style={{display:"flex", justifyContent:"center",marginBottom:"50px",marginTop:"10px"}}>
+            <div class="card-group">
+                {currentItems.map((items) => (
+                    <Item key={items.id} {...items} />
+                ))}
             </div>
-            
+            </div>
         </div>
     )
 };
