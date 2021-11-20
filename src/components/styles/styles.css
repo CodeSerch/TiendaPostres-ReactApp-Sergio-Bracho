@@ -241,7 +241,8 @@
       font-size: 15px;
     }
     nav.navegacion {
-      display: inline-flexbox;
+      display: flex;
+      flex-direction: row;
       overflow: auto;
     }
     h1.titulo1 {

@@ -30,6 +30,7 @@ const CartPage = () => {
         alert("se limpio el carrito")
         console.log("limpiando carrito");
         setCantidad(0);
+        setSumaTotal(0);
     }
 
     function removeId(id) {
@@ -54,16 +55,15 @@ const CartPage = () => {
     }
 
     return (
-        <div style={{ display:"flex", flexDirection:"column", alignItems:"center"}}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h1>Lista de productos</h1>
-            {(cartItems.length > 0) ? <h1>hay productos</h1> : <div>el carrito esta vacio!<Link to={`/products`} style={{ textDecoration: "none" }}>
+            {(cartItems.length > 0) ? <br></br> : <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}><h1>carrito vacio</h1><Link to={`/products`} style={{ textDecoration: "none" }}>
                 <button type="button" class="button1">
                     Volver
                 </button>
             </Link></div>}
             {cartItems.map(items => (
-                <div>
-                    <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", border: "2px solid gray", margin: "10px" }}>
+                    <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", border: "2px solid gray", margin: "-1px", height:"105px" }}>
                         <div >
                             <img src={items.imgurl} alt="postre2" style={{ margin: "20px", width: "100px", height: "100px", borderRadius: "10px" }} />
                         </div>
@@ -78,16 +78,15 @@ const CartPage = () => {
                         </div>
 
                         <button onClick={() => removeId(items.id)} class="button1" style={{ margin: "50px" }}> remover</button>
-
                     </div>
-
-                </div>
             ))}
             <br />
-            <h1>Total del Carrito: {sumaTotal}</h1>
-            <div style={{ marginBottom: "30px", display: "flex" }}>
-                <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>limpiar carrito</button>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <h1>Total del Carrito: {sumaTotal}</h1>
+                <div style={{ marginBottom: "30px", display: "flex" }}>
+                    <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>limpiar carrito</button>
 
+                </div>
             </div>
         </div>
     )
