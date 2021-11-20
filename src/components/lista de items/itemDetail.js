@@ -24,11 +24,10 @@ function ItemDetail({items}) {
 
             const cartItem = cartItems.find(cart => cart.id == productId);
 
-            if ((count + cartItem.cantidad) >= cartItem.stock) {
-                console.log("no hay mas stock!");
-            } else {
+            if ((thisProduct.cantidad + count) > thisProduct.stock){
+                console.log("no hay stock!")
+            } else{
                 if (cartItem) {
-                    console.log(cartItem);
                     if (count > 1) {
                         cartItem.cantidad = cartItem.cantidad + count;
                     } else {
@@ -40,10 +39,9 @@ function ItemDetail({items}) {
                     thisProduct.cantidad = count;
                     cartItems.push(thisProduct);
                 }
-                setCartItems(cartItems);
-                setCantidad(cantidad + (count));
-            }
-
+                    setCartItems(cartItems);
+                    setCantidad(cantidad + (count));
+                }
         } else {
             setIsAdded(true);
             setCount(1);
