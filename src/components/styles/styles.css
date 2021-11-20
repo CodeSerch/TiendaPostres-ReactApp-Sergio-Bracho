@@ -142,7 +142,7 @@ td {
   border: none;
   color: white;
   margin-top: 10px;
-  display: grid;
+  display: flex;
   font-size: 18px;
   padding: 6px;
   padding-left: 20px;

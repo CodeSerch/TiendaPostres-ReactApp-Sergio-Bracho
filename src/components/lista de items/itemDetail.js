@@ -7,7 +7,7 @@ import { CartContext } from "../../context/cartContext";
 import Contador from "../contador";
 
 
-function ItemDetail({items}) {
+function ItemDetail({ items }) {
     const { productId } = useParams();
     const [thisProduct, setProduct] = useState(items.find(item => item.id == productId));
 
@@ -24,9 +24,10 @@ function ItemDetail({items}) {
 
             const cartItem = cartItems.find(cart => cart.id == productId);
 
-            if ((thisProduct.cantidad + count) > thisProduct.stock){
-                console.log("no hay stock!")
-            } else{
+            if ((thisProduct.cantidad + count) > thisProduct.stock) {
+                console.log("no hay stock!");
+                alert("No hay stock");
+            } else {
                 if (cartItem) {
                     if (count > 1) {
                         cartItem.cantidad = cartItem.cantidad + count;
@@ -39,9 +40,9 @@ function ItemDetail({items}) {
                     thisProduct.cantidad = count;
                     cartItems.push(thisProduct);
                 }
-                    setCartItems(cartItems);
-                    setCantidad(cantidad + (count));
-                }
+                setCartItems(cartItems);
+                setCantidad(cantidad + (count));
+            }
         } else {
             setIsAdded(true);
             setCount(1);
@@ -73,29 +74,32 @@ function ItemDetail({items}) {
                     <br />
                     <strong>descripcion: </strong><font color="#808080">{thisProduct.description}</font>
                     <br />
+                    <strong>cantidad en carrito: </strong><font color="#808080">{thisProduct.cantidad}</font>
+                    <br />
                     <div style={{ marginBottom: "30px", display: "flex", justifyContent: "center" }}>
                         {isAdded ? <div style={{ display: "flex" }}>
                             <button type="button" class="button1" onClick={Added} style={{ marginRight: "15px" }}>
                                 Agregar al Carrito
                             </button>
                             <Contador count={count} setCount={setCount} />
-                        </div> : <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                        </div> : <div><div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
 
                             <Link to={`/cart`} style={{ textDecoration: "none" }}>
-                                <button type="button" class="button1">
+                                <button type="button" class="button1" style={{marginRight:"10px"}}>
                                     Finalizar compra
                                 </button>
                             </Link>
-
-                            <button type="button" class="button1" onClick={Added} style={{ textAlign: "start" }}>
-                                Añadir mas
-                            </button>
-                            <Link to={`/products`} style={{ textDecoration: "none" }}>
-                                <button type="button" class="button1">
-                                    Volver
+                                <button type="button" class="button1" onClick={Added} style={{marginRight:"10px"}}>
+                                    Añadir mas
                                 </button>
-                            </Link>
-                            se añadio {count} productos</div>}
+                                <button type="button" class="button1" style={{marginRight:"10px"}} >
+                                    <Link to={`/products`} >
+                                        Volver
+                                    </Link>
+                                </button>
+                                <br/>
+                            </div>
+                                <h3 style={{display:"flex", alignItems:"center"}}>se añadio {count} productos</h3></div>}
                     </div>
                 </div>
             </div>
