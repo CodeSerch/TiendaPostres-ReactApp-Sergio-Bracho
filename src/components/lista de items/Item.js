@@ -16,7 +16,7 @@ const items = ({ id, name, description, stock, imgurl, price }) => {
             </div>
             <div class="card-body">
                 <h5 class="card-title">{name}</h5>
-                <h5 class="card-title">{id}</h5>
+                <h5 class="card-title">id: {id}</h5>
             </div>
             <div class="card-footer">
                 <strong style={{ color: "gray" }}>precio: {price}$</strong>

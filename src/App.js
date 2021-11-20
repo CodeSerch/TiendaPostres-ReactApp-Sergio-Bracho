@@ -54,7 +54,7 @@ function App() {
   }, []);
 
 
-  console.log("items=> " + items)
+  console.log("App.js items=> " + items);
 
   return (
     <DataProvider>
@@ -72,7 +72,7 @@ function App() {
                 <Products />
               </Route>
               <Route path="/products/:productId">
-                <ItemDetail items={items} />
+                <ItemDetail items={items}/>
               </Route>
               <Route path="/categorys/">
                 <Categorys />

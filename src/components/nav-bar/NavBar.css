@@ -97,6 +97,9 @@
     .navbar-brand{
       display: none;
     }
+    nav{
+      margin-right: -10px;
+    }
   }
 
   a:visited {

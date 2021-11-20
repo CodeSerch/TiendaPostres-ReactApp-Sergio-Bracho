@@ -2,31 +2,20 @@ import React from "react"
 import { useParams } from "react-router-dom"
 import "../styles/styles.css";
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CartContext } from "../../context/cartContext";
 import Contador from "../contador";
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, doc, getDocFromCache, query, where } from 'firebase/firestore/lite';
 
-// TODO: Replace the following with your app's Firebase project configuration
-import firebaseConfig from "../../firebaseConfig";
-import { get } from "@firebase/database";
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-function ItemDetail({ items }) {
+function ItemDetail({items}) {
     const { productId } = useParams();
-    const [count, setCount] = useState(1);
-    
-    const { cartItems, setCartItems } = useContext(CartContext);
-    const { cantidad, setCantidad } = useContext(CartContext);
     const [thisProduct, setProduct] = useState(items.find(item => item.id == productId));
 
-    //console.log("items: " + itemsResponse);
+    const [count, setCount] = useState(1);
+    const { cartItems, setCartItems } = useContext(CartContext);
+    const { cantidad, setCantidad } = useContext(CartContext);
 
 
-    //const thisProduct = items.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
         if (isAdded) {
@@ -34,6 +23,7 @@ function ItemDetail({ items }) {
             console.log(isAdded);
 
             const cartItem = cartItems.find(cart => cart.id == productId);
+
             if ((count + cartItem.cantidad) >= cartItem.stock) {
                 console.log("no hay mas stock!");
             } else {
@@ -68,9 +58,9 @@ function ItemDetail({ items }) {
 
     return (
         <div style={{ backgroundColor: "white", fontFamily: "Paytone One" }} class="card-group">
-            <div style={{ marginLeft: "auto", marginRight: "auto", marginTop: "30px" }}>
+            <div class="itemDetail">
                 <div class="contenedorImagen" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
-                    <img src={thisProduct.imgurl} alt="postre2" class="imagen1" style={{ width: "200px", height: "200px" }} />
+                    <img src={thisProduct.imgurl} alt="postre2" class="imagen2" />
                 </div>
                 <div style={{ textAlign: "center" }}>
 
