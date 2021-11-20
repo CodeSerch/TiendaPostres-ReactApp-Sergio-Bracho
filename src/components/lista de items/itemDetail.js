@@ -59,10 +59,10 @@ function ItemDetail({items}) {
     return (
         <div style={{ backgroundColor: "white", fontFamily: "Paytone One" }} class="card-group">
             <div class="itemDetail">
-                <div class="contenedorImagen" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
-                    <img src={thisProduct.imgurl} alt="postre2" class="imagen2" />
+                <div class="contenedorImagen" >
+                    <img src={thisProduct.imgurl} alt={thisProduct.name} class="imagen2" />
                 </div>
-                <div style={{ textAlign: "center" }}>
+                <div class="contenedorTexto">
 
                     <br />
                     <strong >{thisProduct.name}</strong>

@@ -27,7 +27,7 @@ const Promises = ({ items }) => {
     return (
         <div style={{ fontFamily: "Paytone One" }}>
             {isLoading && <h3>Loading...</h3>}
-        <div style={{display:"flex", justifyContent:"center",marginBottom:"50px",marginTop:"10px", flexWrap:"wrap"}}>
+        <div class="itemList" style={{display:"flex", justifyContent:"center",marginBottom:"50px",marginTop:"10px", flexWrap:"wrap"}}>
                 {currentItems.map((items) => (
                     <Item key={items.id} {...items} />
                 ))}
