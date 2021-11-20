@@ -18,11 +18,13 @@ const db = getFirestore(app);
 function ItemDetail({ items }) {
     const { productId } = useParams();
     const [count, setCount] = useState(1);
-    const [thisProduct, setProduct] = useState(items[productId-1]);
+    
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
+    const [thisProduct, setProduct] = useState(items.find(item => item.id == productId));
 
     //console.log("items: " + itemsResponse);
+
 
     //const thisProduct = items.find(prod => prod.id === productId);
     const [isAdded, setIsAdded] = useState(true);
@@ -30,22 +32,28 @@ function ItemDetail({ items }) {
         if (isAdded) {
             setIsAdded(false);
             console.log(isAdded);
+
             const cartItem = cartItems.find(cart => cart.id == productId);
-            if (cartItem) {
-                console.log(cartItem);
-                if (count > 1) {
-                    cartItem.cantidad = cartItem.cantidad + count;
-                } else {
-                    cartItem.cantidad++;
+            if ((count + cartItem.cantidad) >= cartItem.stock) {
+                console.log("no hay mas stock!");
+            } else {
+                if (cartItem) {
+                    console.log(cartItem);
+                    if (count > 1) {
+                        cartItem.cantidad = cartItem.cantidad + count;
+                    } else {
+                        cartItem.cantidad++;
+                    }
+                    console.log(cartItem.cantidad);
                 }
-                console.log(cartItem.cantidad);
+                else {
+                    thisProduct.cantidad = count;
+                    cartItems.push(thisProduct);
+                }
+                setCartItems(cartItems);
+                setCantidad(cantidad + (count));
             }
-            else {
-                thisProduct.cantidad = count;
-                cartItems.push(thisProduct);
-            }
-            setCartItems(cartItems);
-            setCantidad(cantidad + (count));
+
         } else {
             setIsAdded(true);
             setCount(1);
@@ -64,7 +72,7 @@ function ItemDetail({ items }) {
                 <div class="contenedorImagen" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
                     <img src={thisProduct.imgurl} alt="postre2" class="imagen1" style={{ width: "200px", height: "200px" }} />
                 </div>
-                <div style={{textAlign:"center"}}>
+                <div style={{ textAlign: "center" }}>
 
                     <br />
                     <strong >{thisProduct.name}</strong>
@@ -77,13 +85,13 @@ function ItemDetail({ items }) {
                     <br />
                     <strong>descripcion: </strong><font color="#808080">{thisProduct.description}</font>
                     <br />
-                    <div style={{  marginBottom: "30px", display: "flex" , justifyContent: "center"}}>
-                        {isAdded ? <div style={{display: "flex"}}>
-                            <button type="button" class="button1" onClick={Added} style={{marginRight: "15px" }}>
+                    <div style={{ marginBottom: "30px", display: "flex", justifyContent: "center" }}>
+                        {isAdded ? <div style={{ display: "flex" }}>
+                            <button type="button" class="button1" onClick={Added} style={{ marginRight: "15px" }}>
                                 Agregar al Carrito
                             </button>
                             <Contador count={count} setCount={setCount} />
-                        </div> : <div style={{display: "flex", flexDirection:"column",alignItems:"center"}}>
+                        </div> : <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
 
                             <Link to={`/cart`} style={{ textDecoration: "none" }}>
                                 <button type="button" class="button1">
@@ -91,7 +99,7 @@ function ItemDetail({ items }) {
                                 </button>
                             </Link>
 
-                            <button type="button" class="button1" onClick={Added} style={{ textAlign: "start"}}>
+                            <button type="button" class="button1" onClick={Added} style={{ textAlign: "start" }}>
                                 Añadir mas
                             </button>
                             <Link to={`/products`} style={{ textDecoration: "none" }}>
