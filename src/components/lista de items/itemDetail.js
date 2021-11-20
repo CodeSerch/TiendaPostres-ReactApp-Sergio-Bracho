@@ -77,9 +77,9 @@ function ItemDetail({ items }) {
                     <br />
                     <strong>descripcion: </strong><font color="#808080">{thisProduct.description}</font>
                     <br />
-                    <div style={{  marginBottom: "30px" }}>
+                    <div style={{  marginBottom: "30px", display: "flex" , justifyContent: "center"}}>
                         {isAdded ? <div style={{display: "flex"}}>
-                            <button type="button" class="button1" onClick={Added} style={{ textAlign: "start", marginRight: "15px" }}>
+                            <button type="button" class="button1" onClick={Added} style={{marginRight: "15px" }}>
                                 Agregar al Carrito
                             </button>
                             <Contador count={count} setCount={setCount} />
@@ -99,7 +99,7 @@ function ItemDetail({ items }) {
                                     Volver
                                 </button>
                             </Link>
-                            se añadieron {count}  productos {count} </div>}
+                            se añadio {count} productos</div>}
                     </div>
                 </div>
             </div>

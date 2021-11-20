@@ -139,10 +139,10 @@ function App() {
     return (
       <div className="App">
         <div style={{ textAlign: "center", margin: "100px" }}>
-          <Link to={`/category/${1}`} style={{ margin: "50px", padding: "50px", backgroundColor: "#E5B299", borderRadius: "30px", fontSize: "30px" }}>
+          <Link to={`/category/${1}`} class="button1" style={{ margin: "50px", padding: "50px", backgroundColor: "#E5B299", borderRadius: "30px", fontSize: "30px" }}>
             Categoria 1
           </Link>
-          <Link to={`/category/${2}`} style={{ margin: "50px", padding: "50px", backgroundColor: "#E5B299", borderRadius: "30px", fontSize: "30px" }}>
+          <Link to={`/category/${2}`} class="button1" style={{ margin: "50px", padding: "50px", backgroundColor: "#E5B299", borderRadius: "30px", fontSize: "30px" }}>
             Categoria 2
           </Link>
         </div>
