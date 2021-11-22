@@ -6,10 +6,51 @@ import { useState, useContext, useEffect } from "react";
 import { CartContext } from "../../context/cartContext";
 import Contador from "../contador";
 
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
-function ItemDetail({ items }) {
+// TODO: Replace the following with your app's Firebase project configuration
+import firebaseConfig from "../../firebaseConfig";
+//import items from "./components/constanteItems";
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const productosCol = collection(db, 'productos');
+
+
+function ItemDetail() {
+    const [items, setItems] = useState(0);
+    const [once, setOnce] = useState(0);
+    //let categoryId = 1;
+
+    useEffect(() => {
+        if (once < 2) {
+            //const productoSnapshot = getDocs(productosCol);
+            getDocs(productosCol).then((querySnapshot) => {
+                if (querySnapshot.size === 0) {
+                    console.log("no results")
+                }
+                setItems(querySnapshot.docs.map(doc => doc.data()));
+
+                setProduct(items.find(item => item.id == productId));
+
+                console.log("ItemDetail.js items=> " + items);
+
+            }).catch((error) => {
+                console.log("error searching  ");
+            }).finally(() => {
+                console.log("loading false");
+            });
+            setOnce((once+1));
+            console.log("once = " + once)
+        }
+    }, [items]);
+
+
+
+
     const { productId } = useParams();
-    const [thisProduct, setProduct] = useState(items.find(item => item.id == productId));
+    const [thisProduct, setProduct] = useState([]);
 
     const [count, setCount] = useState(1);
     const { cartItems, setCartItems } = useContext(CartContext);
@@ -85,21 +126,21 @@ function ItemDetail({ items }) {
                         </div> : <div><div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
 
                             <Link to={`/cart`} style={{ textDecoration: "none" }}>
-                                <button type="button" class="button1" style={{marginRight:"10px"}}>
+                                <button type="button" class="button1" style={{ marginRight: "10px" }}>
                                     Finalizar compra
                                 </button>
                             </Link>
-                                <button type="button" class="button1" onClick={Added} style={{marginRight:"10px"}}>
-                                    Añadir mas
-                                </button>
-                                <button type="button" class="button1" style={{marginRight:"10px"}} >
-                                    <Link to={`/products`} >
-                                        Volver
-                                    </Link>
-                                </button>
-                                <br/>
-                            </div>
-                                <h3 style={{display:"flex", alignItems:"center"}}>se añadio {count} productos</h3></div>}
+                            <button type="button" class="button1" onClick={Added} style={{ marginRight: "10px" }}>
+                                Añadir mas
+                            </button>
+                            <button type="button" class="button1" style={{ marginRight: "10px" }} >
+                                <Link to={`/products`} >
+                                    Volver
+                                </Link>
+                            </button>
+                            <br />
+                        </div>
+                            <h3 style={{ display: "flex", alignItems: "center" }}>se añadio {count} productos</h3></div>}
                     </div>
                 </div>
             </div>
