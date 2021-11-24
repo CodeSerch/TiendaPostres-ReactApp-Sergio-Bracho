@@ -14,7 +14,7 @@ const db = getFirestore(app);
 const productosCol = collection(db, 'productos');
     
 
-const Promises = ({categoryId}) => {
+const Promises = () => {
     const [items, setItems] = useState([]);
   useEffect(() => {
     //const productoSnapshot = getDocs(productosCol);
