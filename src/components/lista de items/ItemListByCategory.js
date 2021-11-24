@@ -1,24 +1,21 @@
-import { useEffect, useState, useContext, useParams } from "react";
-import { promises } from "../lista de items/promises";
+import { useEffect, useState } from "react";
 import Item from "./Item";
 import "../styles/styles.css";
 
-import { CartContext } from "../../context/cartContext";
-
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore/lite';
 import firebaseConfig from "../../firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const productosCol = collection(db, 'productos');
-    
 
-const Promises = ({categoryId}) => {
+
+const ItemListByCategory = ({ categoryId }) => {
     const [items, setItems] = useState([]);
   useEffect(() => {
-    //const productoSnapshot = getDocs(productosCol);
-    getDocs(productosCol).then((querySnapshot) => {
+    const q = query(productosCol, where("category", "==", parseInt(categoryId)));
+    getDocs(q).then((querySnapshot) => {
       if (querySnapshot.size === 0) {
         console.log("no results")
       }
@@ -42,4 +39,4 @@ const Promises = ({categoryId}) => {
     )
 };
 
-export default Promises;
+export default ItemListByCategory;

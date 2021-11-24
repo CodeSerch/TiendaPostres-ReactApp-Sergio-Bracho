@@ -1,6 +1,7 @@
 import "./App.css";
 import NavBar from "./components/nav-bar/NavBar";
 import ItemList from "./components/lista de items/ItemList";
+import ItemListByCategory from "./components/lista de items/ItemListByCategory";
 //import items from "./components/constanteItems";
 import { BrowserRouter, Switch, Route, useParams, Link } from "react-router-dom";
 import ItemDetail from "./components/lista de items/itemDetail";
@@ -70,8 +71,7 @@ function App() {
     );
   }
   function Category() {
-
-    const { categoryId } = useContext(CartContext);
+    const { categoryId  } = useParams();
     return (
       <div className="App">
         <div>
@@ -80,7 +80,7 @@ function App() {
             <img src=""></img>
           </header>
         </div>
-        <ItemList />
+        <ItemListByCategory categoryId={categoryId}/>
       </div>
     );
   }
