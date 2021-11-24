@@ -8,12 +8,15 @@ export const DataProvider = ({children}) => {
 
     const [cartItems, setCartItems] = useState(dataFixed);
     const [cantidad, setCantidad] = useState(0);
+    const [categoryId, setCategoryId] = useState(0);
     return (
         <CartContext.Provider value={{
             cartItems,
             setCartItems,
             cantidad,
-            setCantidad
+            setCantidad,
+            categoryId,
+            setCategoryId
         }}>
             {children}
         </CartContext.Provider>

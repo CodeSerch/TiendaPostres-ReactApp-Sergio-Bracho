@@ -7,55 +7,11 @@ import ItemDetail from "./components/lista de items/itemDetail";
 import "./components/styles/styles.css";
 import CartPage from "./Cart/CartPage";
 import { DataProvider } from "./context/cartContext";
-
-import React, { useState, useEffect } from 'react';
-
-
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-
-// TODO: Replace the following with your app's Firebase project configuration
-import firebaseConfig from "./firebaseConfig";
-//import items from "./components/constanteItems";
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const productosCol = collection(db, 'productos');
-
-
-// Get a list of productos from your database
-/*async function getProductos(db) {
-  const productosCol = collection(db, 'productos');
-  const productoSnapshot = await getDocs(productosCol);
-  const productoList = productoSnapshot.docs.map(doc => doc.data());
-  return productoList;
-}*/
-
-
-//const arrayDeProductos = getProductos(db);
+import React, { useState, useEffect, useContext } from 'react';
+import { CartContext } from "./context/cartContext";
 
 
 function App() {
-  const [items, setItems] = useState(0);
-  //let categoryId = 1;
-
-  useEffect(() => {
-    //const productoSnapshot = getDocs(productosCol);
-    getDocs(productosCol).then((querySnapshot) => {
-      if (querySnapshot.size === 0) {
-        console.log("no results")
-      }
-      setItems(querySnapshot.docs.map(doc => doc.data()));
-    }).catch((error) => {
-      console.log("error searching  ", error);
-    }).finally(() => {
-      console.log("loading false");
-    });
-  }, []);
-
-
-  console.log("App.js items=> " + items);
-
   return (
     <DataProvider>
       <div>
@@ -72,7 +28,7 @@ function App() {
                 <Products />
               </Route>
               <Route path="/products/:productId">
-                <ItemDetail items={items}/>
+                <ItemDetail />
               </Route>
               <Route path="/categorys/">
                 <Categorys />
@@ -109,20 +65,13 @@ function App() {
 
       <div className="App">
         <h1 class="titulo1">Productos</h1>
-        <ItemList items={items} />
+        <ItemList />
       </div>
     );
   }
   function Category() {
-    const { categoryId } = useParams();
-    const categoryItems = () => {
-      if (items.length == 0) {
-        console.log("no items")
-      } else {
-        console.log("filtrando..")
-        return items.filter(item => item.category == categoryId);
-      }
-    }
+
+    const { categoryId } = useContext(CartContext);
     return (
       <div className="App">
         <div>
@@ -131,7 +80,7 @@ function App() {
             <img src=""></img>
           </header>
         </div>
-        <ItemList items={categoryItems} />
+        <ItemList />
       </div>
     );
   }

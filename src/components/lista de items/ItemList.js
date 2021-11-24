@@ -1,10 +1,51 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, useParams } from "react";
 import { promises } from "../lista de items/promises";
 import Item from "./Item";
 import "../styles/styles.css";
 
+import { CartContext } from "../../context/cartContext";
 
-const Promises = ({ items }) => {
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import firebaseConfig from "../../firebaseConfig";
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const productosCol = collection(db, 'productos');
+
+
+const Promises = () => {
+    const [items, setItems] = useState(0);
+  useEffect(() => {
+    //const productoSnapshot = getDocs(productosCol);
+    getDocs(productosCol).then((querySnapshot) => {
+      if (querySnapshot.size === 0) {
+        console.log("no results")
+      }
+      setItems(querySnapshot.docs.map(doc => doc.data()));
+    }).catch((error) => {
+      console.log("error searching  ", error);
+    }).finally(() => {
+      console.log("loading false");
+    });
+  }, []);
+
+
+  /*console.log("App.js items=> " + items);
+
+  //const { cId } = useParams();
+    const categoryItems = () => {
+      if (items.length == 0) {
+        console.log("no items")
+      } else {
+        console.log("filtrando..")
+        return items.filter(item => item.category == cId);
+      }
+    }*/
+    
+  const { categoryId, setCategoryId } = useContext(CartContext);
+  //setCategoryId(categoryItems);
+
     const [message, setMessage] = useState("");
     const [isSuccess, setIsSucces] = useState(false);
     const [isLoading, setIsLoading] = useState(true);

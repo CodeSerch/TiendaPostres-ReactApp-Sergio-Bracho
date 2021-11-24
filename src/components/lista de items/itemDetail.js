@@ -8,10 +8,7 @@ import Contador from "../contador";
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-
-// TODO: Replace the following with your app's Firebase project configuration
 import firebaseConfig from "../../firebaseConfig";
-//import items from "./components/constanteItems";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -20,11 +17,9 @@ const productosCol = collection(db, 'productos');
 
 function ItemDetail() {
     const [items, setItems] = useState(0);
-    const [once, setOnce] = useState(0);
     //let categoryId = 1;
 
     useEffect(() => {
-        if (once < 2) {
             //const productoSnapshot = getDocs(productosCol);
             getDocs(productosCol).then((querySnapshot) => {
                 if (querySnapshot.size === 0) {
@@ -41,12 +36,7 @@ function ItemDetail() {
             }).finally(() => {
                 console.log("loading false");
             });
-            setOnce((once+1));
-            console.log("once = " + once)
-        }
-    }, [items]);
-
-
+    }, []);
 
 
     const { productId } = useParams();
