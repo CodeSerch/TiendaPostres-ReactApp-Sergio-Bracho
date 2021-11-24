@@ -7,45 +7,38 @@ import { CartContext } from "../../context/cartContext";
 import Contador from "../contador";
 
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore/lite';
 import firebaseConfig from "../../firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const productosCol = collection(db, 'productos');
+
 
 
 function ItemDetail() {
-    const [items, setItems] = useState(0);
-    //let categoryId = 1;
+    const { productId } = useParams();
+    const productosCol = collection(db, "productos");
 
     useEffect(() => {
-            //const productoSnapshot = getDocs(productosCol);
-            getDocs(productosCol).then((querySnapshot) => {
-                if (querySnapshot.size === 0) {
-                    console.log("no results")
-                }
-                setItems(querySnapshot.docs.map(doc => doc.data()));
-
-                setProduct(items.find(item => item.id == productId));
-
-                console.log("ItemDetail.js items=> " + items);
-
-            }).catch((error) => {
-                console.log("error searching  ");
-            }).finally(() => {
-                console.log("loading false");
+        const q = query(productosCol, where("id", "==", parseInt(productId)));
+        getDocs(q).then((querySnapshot) =>{
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+                setProduct(doc.data())
             });
+
+        }).catch((error) => {
+            console.log("error searching")
+        }).finally(()=>{
+            console.log("loading false")
+        });
     }, []);
 
-
-    const { productId } = useParams();
     const [thisProduct, setProduct] = useState([]);
-
     const [count, setCount] = useState(1);
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
-
 
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
