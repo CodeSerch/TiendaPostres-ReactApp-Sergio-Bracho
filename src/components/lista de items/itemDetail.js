@@ -21,7 +21,7 @@ function ItemDetail() {
 
     useEffect(() => {
         const q = query(productosCol, where("id", "==", parseInt(productId)));
-        getDocs(q).then((querySnapshot) =>{
+        getDocs(q).then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
                 console.log(doc.id, " => ", doc.data());
@@ -30,7 +30,7 @@ function ItemDetail() {
 
         }).catch((error) => {
             console.log("error searching")
-        }).finally(()=>{
+        }).finally(() => {
             console.log("loading false")
         });
     }, []);
