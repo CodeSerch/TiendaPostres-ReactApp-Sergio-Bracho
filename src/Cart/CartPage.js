@@ -14,10 +14,12 @@ const db = getFirestore(app);
 
 //Obteniendo fecha
 let today = new Date();
-let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-let dateTime = date+' '+time;
+let dateTime = date + ' ' + time;
 
+
+const buyer = [{ name: "Sergio" }, { phone: "11-54565421" }, { email: "sergioenriquebg28@gmail.com" }]
 
 const CartPage = () => {
     const { cartItems, setCartItems } = useContext(CartContext);
@@ -70,39 +72,38 @@ const CartPage = () => {
     }
 
     async function CreateOrder(items) {
-        const buyer = [{ name: "Alexis" }, { phone: "2284-465215" }, { email: "Arles7@hotmail.com" }]
-        console.log("Orden, buyer:" + JSON.stringify(buyer) + " items:" + JSON.stringify(items));
         const itemsArray = new Array(items.length);
-        console.log("items index 0: " + JSON.stringify(items[0].name))
-        for (let i=0; i<=(items.length - 1) ;i++){
+        for (let i = 0; i <= (items.length - 1); i++) {
             itemsArray[i] = {
                 id: items[i].id,
                 name: items[i].name,
                 price: items[i].price
             }
         }
-
         itemsArray.sort(function (a, b) {
             if (a.id > b.id) {
-              return 1;
+                return 1;
             }
             if (a.id < b.id) {
-              return -1;
+                return -1;
             }
             return 0;
-          });
-
-        console.log("items array length: " + itemsArray.length +" items array: " + JSON.stringify(itemsArray));
+        });
+        console.log("items array length: " + itemsArray.length + " items array: " + JSON.stringify(itemsArray));
 
         // Add a new document with a generated id.
-        addDoc(collection(db, "Ordenes"), {
+        const docRef = await addDoc(collection(db, "ordenes"), {
             items: itemsArray,
             buyer: buyer,
             fecha: dateTime,
             total: sumaTotal
-        }).then(function() {
-            console.log("Document write");
-            })
+        })
+        console.log("orden creada => " + "Items:" + JSON.stringify(itemsArray) + " Comprador: " + JSON.stringify(buyer) 
+        + ", Fecha: " + dateTime + ", Suma total: " + sumaTotal)
+        console.log("Document written with ID: ", docRef.id);
+        alert("Orden creada con id: " + docRef.id)
+        clearCart();
+
     }
 
     return (
