@@ -19,7 +19,6 @@ let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(
 let dateTime = date + ' ' + time;
 
 
-const buyer = [{ name: "Sergio" }, { phone: "11-54565421" }, { email: "sergioenriquebg28@gmail.com" }]
 
 const CartPage = () => {
     const { cartItems, setCartItems } = useContext(CartContext);
@@ -72,6 +71,8 @@ const CartPage = () => {
     }
 
     async function CreateOrder(items) {
+        const buyer = [{ name: prompt("Ingresar nombre") },
+         { phone: prompt("Ingresar telefono") }, { email: prompt("Ingresar Correo") }]
         const itemsArray = new Array(items.length);
         for (let i = 0; i <= (items.length - 1); i++) {
             itemsArray[i] = {
