@@ -238,7 +238,7 @@ img.envioGratis {
   div.itemContainer {
     width: 350px;
     height: 85px;
-    font-size: 11px;
+    font-size: 9px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -362,9 +362,13 @@ img.envioGratis {
   }
 
   img.imagen1 {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 10%;
+  }
+
+ .card{
+    width: 10px;
   }
 
   img.imagen2 {

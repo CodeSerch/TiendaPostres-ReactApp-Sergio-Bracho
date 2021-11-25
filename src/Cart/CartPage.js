@@ -5,6 +5,20 @@ import items from "../components/constanteItems";
 import { CartContext } from "../context/cartContext";
 import "../components/styles/styles.css";
 
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, addDoc } from 'firebase/firestore/lite';
+import firebaseConfig from "../firebaseConfig";
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+//Obteniendo fecha
+let today = new Date();
+let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+let dateTime = date+' '+time;
+
+
 const CartPage = () => {
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
@@ -55,6 +69,42 @@ const CartPage = () => {
         setCartItems(newArray);
     }
 
+    async function CreateOrder(items) {
+        const buyer = [{ name: "Alexis" }, { phone: "2284-465215" }, { email: "Arles7@hotmail.com" }]
+        console.log("Orden, buyer:" + JSON.stringify(buyer) + " items:" + JSON.stringify(items));
+        const itemsArray = new Array(items.length);
+        console.log("items index 0: " + JSON.stringify(items[0].name))
+        for (let i=0; i<=(items.length - 1) ;i++){
+            itemsArray[i] = {
+                id: items[i].id,
+                name: items[i].name,
+                price: items[i].price
+            }
+        }
+
+        itemsArray.sort(function (a, b) {
+            if (a.id > b.id) {
+              return 1;
+            }
+            if (a.id < b.id) {
+              return -1;
+            }
+            return 0;
+          });
+
+        console.log("items array length: " + itemsArray.length +" items array: " + JSON.stringify(itemsArray));
+
+        // Add a new document with a generated id.
+        addDoc(collection(db, "Ordenes"), {
+            items: itemsArray,
+            buyer: buyer,
+            fecha: dateTime,
+            total: sumaTotal
+        }).then(function() {
+            console.log("Document write");
+            })
+    }
+
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h1 class="cartH1">Lista de productos</h1>
@@ -64,28 +114,28 @@ const CartPage = () => {
                 </button>
             </Link></div>}
             {cartItems.map(items => (
-                    <div class="itemContainer" >
-                        <div >
-                            <img src={items.imgurl} alt="postre2" class="cartImg" />
-                        </div>
-                        <div style={{ width: "200px" }}>
-                            <strong >{items.name} x {items.cantidad} u.</strong>
-                            <br />
-                            <strong >precio: {items.price}</strong >
-                            <br />
-                            <strong >id: {items.id}</strong >
-                            <br />
-                            <strong >total: {(items.price * items.cantidad)}</strong >
-                        </div>
-
-                        <button onClick={() => removeId(items.id)} class="button1" style={{ margin: "50px" }}> remover</button>
+                <div class="itemContainer" >
+                    <div >
+                        <img src={items.imgurl} alt="postre2" class="cartImg" />
                     </div>
+                    <div style={{ width: "200px" }}>
+                        <strong >{items.name} x {items.cantidad} u.</strong>
+                        <br />
+                        <strong >precio: {items.price}</strong >
+                        <br />
+                        <strong >id: {items.id}</strong >
+                        <br />
+                        <strong >total: {(items.price * items.cantidad)}</strong >
+                    </div>
+                    <button onClick={() => removeId(items.id)} class="button1" style={{ margin: "50px" }}> remover</button>
+                </div>
             ))}
             <br />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <h1 class="cartH1">Total del Carrito: {sumaTotal}</h1>
                 <div style={{ marginBottom: "30px", display: "flex" }}>
-                    <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>limpiar carrito</button>
+                    <button onClick={() => CreateOrder(cartItems)} class="button1" style={{ marginRight: "20px" }}>Crear Orden</button>
+                    <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>Limpiar carrito</button>
 
                 </div>
             </div>
