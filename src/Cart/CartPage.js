@@ -135,7 +135,7 @@ const CartPage = () => {
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <h1 class="cartH1">Total del Carrito: {sumaTotal}</h1>
                 <div style={{ marginBottom: "30px", display: "flex" }}>
-                    <button onClick={() => CreateOrder(cartItems)} class="button1" style={{ marginRight: "20px" }}>Crear Orden</button>
+                    { (cartItems.length <= 0) ? <br></br> : <button onClick={() => CreateOrder(cartItems)} class="button1" style={{ marginRight: "20px" }}>Crear Orden</button> }
                     <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>Limpiar carrito</button>
 
                 </div>
