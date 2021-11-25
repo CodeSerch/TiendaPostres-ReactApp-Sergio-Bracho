@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import items from "../components/constanteItems";
 import { CartContext } from "../context/cartContext";
+import "../components/styles/styles.css";
 
 const CartPage = () => {
     const { cartItems, setCartItems } = useContext(CartContext);
@@ -56,16 +57,16 @@ const CartPage = () => {
 
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <h1>Lista de productos</h1>
+            <h1 class="cartH1">Lista de productos</h1>
             {(cartItems.length > 0) ? <br></br> : <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}><h1>carrito vacio</h1><Link to={`/products`} style={{ textDecoration: "none" }}>
                 <button type="button" class="button1">
                     Volver
                 </button>
             </Link></div>}
             {cartItems.map(items => (
-                    <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", border: "2px solid gray", margin: "-1px", height:"105px" }}>
+                    <div class="itemContainer" >
                         <div >
-                            <img src={items.imgurl} alt="postre2" style={{ margin: "20px", width: "100px", height: "100px", borderRadius: "10px" }} />
+                            <img src={items.imgurl} alt="postre2" class="cartImg" />
                         </div>
                         <div style={{ width: "200px" }}>
                             <strong >{items.name} x {items.cantidad} u.</strong>
@@ -82,7 +83,7 @@ const CartPage = () => {
             ))}
             <br />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <h1>Total del Carrito: {sumaTotal}</h1>
+                <h1 class="cartH1">Total del Carrito: {sumaTotal}</h1>
                 <div style={{ marginBottom: "30px", display: "flex" }}>
                     <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>limpiar carrito</button>
 
