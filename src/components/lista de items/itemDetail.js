@@ -42,13 +42,11 @@ function ItemDetail() {
     const Added = () => {
         if (isAdded) {
             setIsAdded(false);
-            console.log(isAdded);
-
             const cartItem = cartItems.find(cart => cart.id == productId);
-
-            if ((thisProduct.cantidad + count) > thisProduct.stock) {
+            if ((thisProduct.cantidad + count) > thisProduct.stock  || count > thisProduct.stock) {
                 console.log("no hay stock!");
                 alert("No hay stock");
+                setIsAdded(true);
             } else {
                 if (cartItem) {
                     if (count > 1) {

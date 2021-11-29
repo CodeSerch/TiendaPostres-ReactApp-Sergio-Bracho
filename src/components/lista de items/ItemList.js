@@ -25,7 +25,7 @@ const Promises = () => {
       setItems(querySnapshot.docs.map(doc => doc.data())).then(()=>{
       })
     }).catch((error) => {
-      console.log("error searching  ", error);
+      console.log("error searching");
     }).finally(() => {
       console.log("then finally");
     });
