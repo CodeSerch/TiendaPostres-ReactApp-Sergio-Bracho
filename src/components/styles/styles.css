@@ -91,6 +91,18 @@ div.itemList {
   margin-left: 30px;
 }
 
+Form.formCheckout {
+  width: 800px; 
+  border:2px solid gray;
+  border-radius: 15px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding:20px
+
+}
+
 div.itemContainer {
   display: inline-flex;
   align-items: center;
@@ -195,7 +207,7 @@ td {
   padding-right: 15px;
 }
 .button1 {
-  background-color: #5a9bb4; /* Green */
+  background-color: #25c1ff; /* Green */
   border: none;
   color: white;
   margin-top: 10px;
@@ -208,7 +220,7 @@ td {
 }
 
 .button1:hover {
-  background-color: #00ccff;
+  background-color: #51dcff;
   color: white;
   transition-duration: 0.3s;
 }

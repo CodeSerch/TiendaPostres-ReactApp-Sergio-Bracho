@@ -57,8 +57,8 @@ const CartCheckout = () => {
     //const [name] = useState("");
 
     async function CreateOrder(items) {
-        const buyer = [{ name: values.nombre},
-        { phone: values.telefono}, { email: values.correo}]
+        const buyer = [{ name: values.nombre },
+        { phone: values.telefono }, { email: values.correo }]
         const itemsArray = new Array(items.length);
         for (let i = 0; i <= (items.length - 1); i++) {
             itemsArray[i] = {
@@ -108,7 +108,7 @@ const CartCheckout = () => {
         <div>
             <h1>CartCheckout</h1>
             <div className="" style={{ display: "flex", flexDirection: "row" }}>
-                <Form className="ps-3" style={{ width: "800px" }} onSubmit={onSubmitForm}>
+                <Form className="formCheckout" onSubmit={onSubmitForm}>
                     <Row className="mb-3 w-100">
                         <Form.Group as={Col} controlId="formGridNombre">
                             <Form.Label>Nombre</Form.Label>
@@ -136,10 +136,19 @@ const CartCheckout = () => {
                     <Form.Group className="mb-3" id="formGridCheckbox">
                         <Form.Check type="checkbox" label="Checkbox" />
                     </Form.Group>
-
-                    <Button variant="primary" type="submit">
+                    <div style={{display:"flex"}}>
+                    <button class="button1" type="submit">
                         Submit
-                    </Button>
+                    </button>
+                    <button type="button" class="button1"  style={{  marginLeft: "20px" }} onClick={() => CreateOrder(cartItems)}>
+                        Finalizar Compra
+                    </button>
+                    <Link to={`/cart`} style={{ textDecoration: "none", marginLeft: "20px" }} >
+                        <button type="button" class="button1">
+                            Regresar al Carrito
+                        </button>
+                    </Link>
+                    </div>
                 </Form>
 
                 <div className="carritoList">
@@ -161,21 +170,12 @@ const CartCheckout = () => {
                     <div style={{ display: "flex", justifyContent: "center" }} >
                         <h3> Total: {sumaTotal}</h3>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-                        <Link to={`/cart`} style={{ textDecoration: "none" }} >
-                            <button type="button" class="button1">
-                                Regresar al Carrito
-                            </button>
-                        </Link>
-                    </div>
+
                 </div>
 
             </div>
-            <h1>values: {values.nombre}, {values.correo}, {values.telefono}, {values.direccion}</h1>
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-                <button type="button" class="button1" onClick={() => CreateOrder(cartItems)}>
-                    Finalizar Compra 
-                </button>
+
             </div>
 
 
