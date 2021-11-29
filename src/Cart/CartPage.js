@@ -5,19 +5,6 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../context/cartContext";
 import "../components/styles/styles.css";
 
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc } from 'firebase/firestore/lite';
-import firebaseConfig from "../firebaseConfig";
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-//Obteniendo fecha
-let today = new Date();
-let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-let dateTime = date + ' ' + time;
-
 
 
 const CartPage = () => {
@@ -70,43 +57,6 @@ const CartPage = () => {
         setCartItems(newArray);
     }
 
-    async function CreateOrder(items) {
-        const buyer = [{ name: prompt("Ingresar nombre") },
-        { phone: prompt("Ingresar telefono") }, { email: prompt("Ingresar Correo") }]
-        const itemsArray = new Array(items.length);
-        for (let i = 0; i <= (items.length - 1); i++) {
-            itemsArray[i] = {
-                id: items[i].id,
-                name: items[i].name,
-                price: items[i].price
-            }
-        }
-        itemsArray.sort(function (a, b) {
-            if (a.id > b.id) {
-                return 1;
-            }
-            if (a.id < b.id) {
-                return -1;
-            }
-            return 0;
-        });
-        console.log("items array length: " + itemsArray.length + " items array: " + JSON.stringify(itemsArray));
-
-        // Add a new document with a generated id.
-        const docRef = await addDoc(collection(db, "ordenes"), {
-            items: itemsArray,
-            buyer: buyer,
-            fecha: dateTime,
-            total: sumaTotal
-        })
-        console.log("orden creada => " + "Items:" + JSON.stringify(itemsArray) + " Comprador: " + JSON.stringify(buyer)
-            + ", Fecha: " + dateTime + ", Suma total: " + sumaTotal)
-        console.log("Document written with ID: ", docRef.id);
-        alert("Orden creada con id: " + docRef.id)
-        clearCart();
-
-    }
-
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h1 class="cartH1">Lista de productos</h1>
@@ -137,11 +87,11 @@ const CartPage = () => {
                 <h1 class="cartH1">Total del Carrito: {sumaTotal}</h1>
                 <div style={{ marginBottom: "30px", display: "flex" }}>
                     {(cartItems.length <= 0) ? <br></br> : <Link to={`/cartCheckout`} style={{ textDecoration: "none" }}>
-                        <button type="button" class="button1">
+                        <button type="button" class="button1" style={{marginRight:"20px"}}>
                             Checkout
                         </button>
                     </Link>}
-                    <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>Limpiar carrito</button>
+                    <button onClick={clearCart} class="button1">Limpiar carrito</button>
 
                 </div>
             </div>
