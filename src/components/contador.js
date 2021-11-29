@@ -10,10 +10,10 @@ const Contador = ({count, setCount}) => {
   return (
     <div style={{display:"flex", textAlign:"center",alignItems:"center", justifyContent:"center"}}>
       <p style={{marginBottom:"0px"}}>{count}</p>
-      <button onClick={increment}  style={{backgroundColor:"#5a9bb4", padding:"6px"}}>
+      <button onClick={increment}  style={{backgroundColor:"#25c1ff", padding:"6px"}}>
         +
       </button>
-      <button onClick={Reset} style={{backgroundColor:"#5a9bb4", padding:"6px"}}>
+      <button onClick={Reset} style={{backgroundColor:"#25c1ff", padding:"6px"}}>
         -
       </button>
     </div>

@@ -57,51 +57,58 @@ const CartCheckout = () => {
     //const [name] = useState("");
 
     async function CreateOrder(items) {
-        const buyer = [{ name: values.nombre },
-        { phone: values.telefono }, { email: values.correo }]
-        const itemsArray = new Array(items.length);
-        for (let i = 0; i <= (items.length - 1); i++) {
-            itemsArray[i] = {
-                id: items[i].id,
-                name: items[i].name,
-                price: items[i].price
+        if (true) {
+            const buyer = [{ name: values.nombre },
+            { phone: values.telefono }, { email: values.correo }]
+            const itemsArray = new Array(items.length);
+            for (let i = 0; i <= (items.length - 1); i++) {
+                itemsArray[i] = {
+                    id: items[i].id,
+                    name: items[i].name,
+                    price: items[i].price
+                }
             }
-        }
-        itemsArray.sort(function (a, b) {
-            if (a.id > b.id) {
-                return 1;
-            }
-            if (a.id < b.id) {
-                return -1;
-            }
-            return 0;
-        });
-        console.log("items array length: " + itemsArray.length + " items array: " + JSON.stringify(itemsArray));
+            itemsArray.sort(function (a, b) {
+                if (a.id > b.id) {
+                    return 1;
+                }
+                if (a.id < b.id) {
+                    return -1;
+                }
+                return 0;
+            });
+            console.log("items array length: " + itemsArray.length + " items array: " + JSON.stringify(itemsArray));
 
-        // Add a new document with a generated id.
-        const docRef = await addDoc(collection(db, "ordenes"), {
-            items: itemsArray,
-            buyer: buyer,
-            fecha: dateTime,
-            total: sumaTotal
-        })
-        console.log("orden creada => " + "Items:" + JSON.stringify(itemsArray) + " Comprador: " + JSON.stringify(buyer)
-            + ", Fecha: " + dateTime + ", Suma total: " + sumaTotal)
-        console.log("Document written with ID: ", docRef.id);
-        alert("Orden creada con id: " + docRef.id);
-        clearCart();
+            // Add a new document with a generated id.
+            const docRef = await addDoc(collection(db, "ordenes"), {
+                items: itemsArray,
+                buyer: buyer,
+                fecha: dateTime,
+                total: sumaTotal
+            })
+            console.log("orden creada => " + "Items:" + JSON.stringify(itemsArray) + " Comprador: " + JSON.stringify(buyer)
+                + ", Fecha: " + dateTime + ", Suma total: " + sumaTotal)
+            console.log("Document written with ID: ", docRef.id);
+            alert("Orden creada con id: " + docRef.id);
+            clearCart();
+        }
     }
 
+
+    const [validated, setValidated] = useState(false);
 
     const onSubmitForm = (event) => {
         event.preventDefault();
         alert("nombre value is :" + JSON.stringify(values));
+        CreateOrder(cartItems);
+        return false;
     };
 
     const onChangeName = (e) => {
         const { name, value } = e.target;
         setValues({ ...values, [name]: value })
     };
+
 
 
     return (
@@ -134,20 +141,17 @@ const CartCheckout = () => {
                     </Row>
 
                     <Form.Group className="mb-3" id="formGridCheckbox">
-                        <Form.Check type="checkbox" label="Checkbox" />
+                        <Form.Check required type="checkbox" label="Aceptar Terminos" />
                     </Form.Group>
-                    <div style={{display:"flex"}}>
-                    <button class="button1" type="submit">
-                        Submit
-                    </button>
-                    <button type="button" class="button1"  style={{  marginLeft: "20px" }} onClick={() => CreateOrder(cartItems)}>
-                        Finalizar Compra
-                    </button>
-                    <Link to={`/cart`} style={{ textDecoration: "none", marginLeft: "20px" }} >
-                        <button type="button" class="button1">
-                            Regresar al Carrito
+                    <div style={{ display: "flex" }}>
+                        <button type="submit" class="button1" style={{ marginLeft: "20px" }}>
+                            Finalizar Compra
                         </button>
-                    </Link>
+                        <Link to={`/cart`} style={{ textDecoration: "none", marginLeft: "20px" }} >
+                            <button type="button" class="button1">
+                                Regresar al Carrito
+                            </button>
+                        </Link>
                     </div>
                 </Form>
 

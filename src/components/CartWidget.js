@@ -8,7 +8,7 @@ const { cantidad } = useContext(CartContext);
 
     return (
         <div>
-            <i class="fas fa-shopping-cart fa-2x" style={{ marginRight: "25px" }}><strong>{(cantidad>0) ? cantidad : null}</strong></i>
+            <i class="fas fa-shopping-cart fa-2x" ><div class="indiceCantidad">{(cantidad>0) ? cantidad : <div style={{display:"none"}}></div>}</div></i>
         </div>
 
 

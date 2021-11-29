@@ -1,4 +1,14 @@
-
+div.indiceCantidad{
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  color: #ffae00;
+  font-size: 22px;
+  background-color: rgb(172, 94, 31);
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+}
 .navbar.navbar-expand-lg {
     background-color: #7D5A50;
     border-color: #ffffff;
