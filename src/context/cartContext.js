@@ -16,7 +16,7 @@ export const DataProvider = ({children}) => {
             cantidad,
             setCantidad,
             categoryId,
-            setCategoryId
+            setCategoryId,
         }}>
             {children}
         </CartContext.Provider>

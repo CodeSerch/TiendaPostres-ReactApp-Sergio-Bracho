@@ -1,7 +1,7 @@
 import { remove } from "dom-helpers";
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import items from "../components/constanteItems";
+//import items from "../components/constanteItems";
 import { CartContext } from "../context/cartContext";
 import "../components/styles/styles.css";
 
@@ -23,6 +23,7 @@ let dateTime = date + ' ' + time;
 const CartPage = () => {
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
+
     const calcularTotal = () => {
         let suma = 0;
         if (cantidad >= 1) {
@@ -34,7 +35,6 @@ const CartPage = () => {
         return suma;
     }
     const [sumaTotal, setSumaTotal] = useState(calcularTotal);
-
 
     const clearCart = () => {
         cartItems.forEach((cartItems) => {
@@ -72,7 +72,7 @@ const CartPage = () => {
 
     async function CreateOrder(items) {
         const buyer = [{ name: prompt("Ingresar nombre") },
-         { phone: prompt("Ingresar telefono") }, { email: prompt("Ingresar Correo") }]
+        { phone: prompt("Ingresar telefono") }, { email: prompt("Ingresar Correo") }]
         const itemsArray = new Array(items.length);
         for (let i = 0; i <= (items.length - 1); i++) {
             itemsArray[i] = {
@@ -99,8 +99,8 @@ const CartPage = () => {
             fecha: dateTime,
             total: sumaTotal
         })
-        console.log("orden creada => " + "Items:" + JSON.stringify(itemsArray) + " Comprador: " + JSON.stringify(buyer) 
-        + ", Fecha: " + dateTime + ", Suma total: " + sumaTotal)
+        console.log("orden creada => " + "Items:" + JSON.stringify(itemsArray) + " Comprador: " + JSON.stringify(buyer)
+            + ", Fecha: " + dateTime + ", Suma total: " + sumaTotal)
         console.log("Document written with ID: ", docRef.id);
         alert("Orden creada con id: " + docRef.id)
         clearCart();
@@ -136,7 +136,11 @@ const CartPage = () => {
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <h1 class="cartH1">Total del Carrito: {sumaTotal}</h1>
                 <div style={{ marginBottom: "30px", display: "flex" }}>
-                    { (cartItems.length <= 0) ? <br></br> : <button onClick={() => CreateOrder(cartItems)} class="button1" style={{ marginRight: "20px" }}>Crear Orden</button> }
+                    {(cartItems.length <= 0) ? <br></br> : <Link to={`/cartCheckout`} style={{ textDecoration: "none" }}>
+                        <button type="button" class="button1">
+                            Checkout
+                        </button>
+                    </Link>}
                     <button onClick={clearCart} class="button1" style={{ marginRight: "20px" }}>Limpiar carrito</button>
 
                 </div>

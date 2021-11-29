@@ -95,10 +95,49 @@ div.itemContainer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid gray;
   margin: -1px;
   height: 105px;
   border-radius: 10px;
+}
+
+div.itemContainerCheckout {
+  display: inline-flex;
+  align-items: center;
+  margin: -1px;
+  height: 50px;
+  width: 380px;
+  margin-left: 20px;
+  font-weight: bolder;
+}
+
+div.itemContainerCheckoutPrice {
+  display: inline-flex;
+  align-items: center;
+  justify-content: end;
+  font-weight: bolder;
+}
+
+div.itemContainerCheckoutTitulo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: -1px;
+  height: 50px;
+  width: 500px;
+  margin-top: 20px;
+}
+
+div.carritoList{
+  align-self: "center";
+  width: 500px;
+  border: 2px solid gray;
+  margin-bottom: 50px;
+  border-radius: 20px;
+}
+
+div.itemContainer2 {
+  display: flex;
+  flex-direction: column;
 }
 
 img.imagen1 {

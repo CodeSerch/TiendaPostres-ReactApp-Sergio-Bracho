@@ -10,6 +10,7 @@ import CartPage from "./Cart/CartPage";
 import { DataProvider } from "./context/cartContext";
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from "./context/cartContext";
+import CartCheckout from "./Cart/CartCheckout";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
                 <Category />
               </Route>
               <Route path="/cart" component={CartPage} exact />
+              <Route path="/cartCheckout" component={CartCheckout} exact />
             </Switch>
           </div>
         </BrowserRouter>
