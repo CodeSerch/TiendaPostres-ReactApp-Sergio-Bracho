@@ -57,8 +57,8 @@ const CartCheckout = () => {
     //const [name] = useState("");
 
     async function CreateOrder(items) {
-        const buyer = [{ name: prompt("ingresar nombre") },
-        { phone: prompt("ingresa telefono") }, { email: prompt("Ingresar Correo") }]
+        const buyer = [{ name: values.nombre},
+        { phone: values.telefono}, { email: values.correo}]
         const itemsArray = new Array(items.length);
         for (let i = 0; i <= (items.length - 1); i++) {
             itemsArray[i] = {
@@ -171,7 +171,7 @@ const CartCheckout = () => {
                 </div>
 
             </div>
-            <Form2></Form2>
+            <h1>values: {values.nombre}, {values.correo}, {values.telefono}, {values.direccion}</h1>
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
                 <button type="button" class="button1" onClick={() => CreateOrder(cartItems)}>
                     Finalizar Compra 
