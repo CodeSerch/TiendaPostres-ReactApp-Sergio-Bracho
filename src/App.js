@@ -11,6 +11,7 @@ import { DataProvider } from "./context/cartContext";
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from "./context/cartContext";
 import CartCheckout from "./Cart/CartCheckout";
+import Orders from "./Cart/Orders";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
               </Route>
               <Route path="/cart" component={CartPage} exact />
               <Route path="/cartCheckout" component={CartCheckout} exact />
+              <Route path="/orders" component={Orders} exact />
             </Switch>
           </div>
         </BrowserRouter>
@@ -65,7 +67,7 @@ function App() {
   }
   function Products() {
     return (
-      
+
       <div className="App">
         <h1 class="titulo1">Productos</h1>
         <ItemList />
@@ -73,7 +75,7 @@ function App() {
     );
   }
   function Category() {
-    const { categoryId  } = useParams();
+    const { categoryId } = useParams();
     return (
       <div className="App">
         <div>
@@ -82,7 +84,7 @@ function App() {
             <img src=""></img>
           </header>
         </div>
-        <ItemListByCategory categoryId={categoryId}/>
+        <ItemListByCategory categoryId={categoryId} />
       </div>
     );
   }

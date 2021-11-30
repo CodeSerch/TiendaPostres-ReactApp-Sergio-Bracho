@@ -8,7 +8,6 @@ import { width } from "dom-helpers";
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore/lite';
 import firebaseConfig from "../firebaseConfig";
-import Form2 from "./form";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

@@ -81,6 +81,15 @@ img.cartImg {
 div.contenedorImagen {
   align-self: center;
 }
+div.ordenes{
+  background-color: #20a1d454;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  padding: 15px;
+  text-align: center;
+}
 
 div.contenedorTexto {
   height: 300px;

@@ -39,6 +39,12 @@ export const NavBar = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link to={`/orders`} style={{ textDecoration: "none", marginRight: "10px" }}>
+                Ordenes
+              </Link>
+            </li>
+            
+            <li className="nav-item">
               <Link to={`/categorys`} style={{ textDecoration: "none", marginRight: "10px" }}>
                 Categorias
               </Link>
