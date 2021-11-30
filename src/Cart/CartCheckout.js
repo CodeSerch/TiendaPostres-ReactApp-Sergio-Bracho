@@ -178,7 +178,7 @@ const CartCheckout = () => {
                         ))}
                     </div>
                     <div style={{ display: "flex", justifyContent: "center" }} >
-                        <h3> Total: {sumaTotal}</h3>
+                        <h3> #{cantidad} productos, Total: {sumaTotal}</h3>
                     </div>
 
                 </div>

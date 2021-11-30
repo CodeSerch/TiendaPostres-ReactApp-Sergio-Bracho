@@ -118,23 +118,23 @@ function ItemDetail() {
                     <div style={{ marginBottom: "30px", display: "flex", justifyContent: "center" }}>
                         {isAdded ? <div>
                             {availableStock ? <div style={{ display: "flex" }}>
-                            <button type="button" class="button1" onClick={Added} style={{ marginRight: "15px" }}>
-                                Agregar al Carrito
-                            </button>
-                            <Contador count={count} setCount={setCount} />
-                        </div> : <div><div style={{ display: "flex", alignItems: "center" }}>
+                                <button type="button" class="button1" onClick={Added} style={{ marginRight: "15px" }}>
+                                    Agregar al Carrito
+                                </button>
+                                <Contador count={count} setCount={setCount} />
+                            </div> : <div><div style={{ display: "flex", alignItems: "center" }}>
                                 <Link to={`/cart`} style={{ textDecoration: "none" }}>
                                     <button type="button" class="button1" style={{ marginLeft: "0px" }}>
                                         Finalizar compra
                                     </button>
                                 </Link>
                                 <button type="button" class="button1" style={{ marginLeft: "10px" }} >
-                                    <Link to={`/products`} style={{textDecoration: "none"}} >
+                                    <Link to={`/products`} style={{ textDecoration: "none" }} >
                                         Volver
                                     </Link>
                                 </button>
-                                 
-                            </div><h3 style={{marginLeft:"40px"}}>no hay stock</h3></div>}
+
+                            </div><h3 style={{ marginLeft: "40px" }}>no hay stock</h3></div>}
                         </div> : <div><div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
 
                             <Link to={`/cart`} style={{ textDecoration: "none" }}>
@@ -146,7 +146,7 @@ function ItemDetail() {
                                 Añadir mas
                             </button>
                             <button type="button" class="button1" style={{ marginRight: "10px" }} >
-                                <Link to={`/products`} style={{textDecoration: "none"}}>
+                                <Link to={`/products`} style={{ textDecoration: "none" }}>
                                     Volver
                                 </Link>
                             </button>
