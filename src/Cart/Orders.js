@@ -42,6 +42,7 @@ const Orders = () => {
                             {order.items.map(item =>(
                                 <div>
                                 titulo: {item.name}<br/>
+                                cantidad: {item.cantidad}<br/>
                                 precio: {item.price}<br/>
                                 id: {item.id}<br/>
                                 </div>

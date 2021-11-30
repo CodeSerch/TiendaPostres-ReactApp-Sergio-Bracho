@@ -66,6 +66,7 @@ const CartCheckout = () => {
                 itemsArray[i] = {
                     id: items[i].id,
                     name: items[i].name,
+                    cantidad: items[i].cantidad,
                     price: items[i].price
                 }
             }
