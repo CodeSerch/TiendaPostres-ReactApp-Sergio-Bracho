@@ -28,25 +28,22 @@ const Orders = () => {
 
     return (
         <div>
-            <h1>Ordenes</h1>
-            <div class="ordenes">
+            <h1 style={{display:"flex", justifyContent:"center"}}>Ordenes</h1>
+            <div class="itemList" style={{display:"flex", flexWrap:"wrap"}}>
                 {orders.map(order => (
-                    <div style={{ display: "flex" }}>
+                    <div class="ordenes">
                         <text>
-                            nombre: {order.buyer[0].name}<br/>
-                            telefono: {order.buyer[1].phone}<br/>
-                            correo: {order.buyer[2].email}<br/>
-                            fecha de creacion: {order.fecha}<br/>
-                            total de la orden: {order.total}<br/>
-                            <br/><h4>Productos:</h4>
+                            <b>Nombre:</b> {order.buyer[0].name}, <b>Telefono:</b> {order.buyer[1].phone}<br/>
+                            <b>correo:</b> {order.buyer[2].email}<br/>
+                            <b>Fecha de creacion:</b> {order.fecha}<br/>
+                            <br/><h4><b>Productos:</b></h4>
                             {order.items.map(item =>(
                                 <div>
-                                titulo: {item.name}<br/>
-                                cantidad: {item.cantidad}<br/>
-                                precio: {item.price}<br/>
-                                id: {item.id}<br/>
+                                <b>titulo:</b> {item.name}, <b>cantidad:</b> {item.cantidad}<br/>
+                                <b>precio:</b> {item.price}, <b>id:</b> {item.id}<br/>
                                 </div>
                             ))}
+                            <h4><b>Total de la orden:</b> {order.total}</h4>
                         </text>
                     </div>
                 ))}

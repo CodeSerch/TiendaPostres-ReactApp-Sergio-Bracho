@@ -82,13 +82,15 @@ div.contenedorImagen {
   align-self: center;
 }
 div.ordenes{
-  background-color: #20a1d454;
-  width: 400px;
+  background-color: #20a1d43a;
+  width: 380px;
   display: flex;
   justify-content: center;
   margin: 20px;
   padding: 15px;
   text-align: center;
+  border-radius: 15px;
+  border:rgba(142, 140, 212, 0.637) solid 2px;
 }
 
 div.contenedorTexto {

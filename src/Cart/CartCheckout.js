@@ -14,7 +14,7 @@ const db = getFirestore(app);
 
 //Obteniendo fecha
 let today = new Date();
-let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+let date = today.getFullYear() + '-' + today.getDate() + '-' + (today.getMonth() + 1);
 let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 let dateTime = date + ' ' + time;
 
