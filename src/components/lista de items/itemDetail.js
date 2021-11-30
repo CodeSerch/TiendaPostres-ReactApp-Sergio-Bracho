@@ -18,6 +18,13 @@ function ItemDetail() {
     const productosCol = collection(db, "productos");
     const [availableStock, setAvailableStock] = useState(true);
 
+    const [thisProduct, setProduct] = useState([]);
+    const [count, setCount] = useState(1);
+    const { cartItems, setCartItems } = useContext(CartContext);
+    const { cantidad, setCantidad } = useContext(CartContext);
+
+    const [isAdded, setIsAdded] = useState(true);
+
     useEffect(() => {
         const q = query(productosCol, where("id", "==", parseInt(productId)));
         getDocs(q).then((querySnapshot) => {
@@ -32,37 +39,29 @@ function ItemDetail() {
         }).finally(() => {
             console.log("loading false");
         });
+
+        const cartItem = cartItems.find(cart => cart.id == productId);
+        if (cartItem) {
+            thisProduct.cantidad = cartItem.cantidad;
+            if (cartItem.cantidad >= cartItem.stock) {
+                setAvailableStock(false);
+            }
+        }
     }, []);
 
-    const [thisProduct, setProduct] = useState([]);
-    const [count, setCount] = useState(1);
-    const { cartItems, setCartItems } = useContext(CartContext);
-    const { cantidad, setCantidad } = useContext(CartContext);
-
-    const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
-
-
         if (isAdded) {
             setIsAdded(false);
             const cartItem = cartItems.find(cart => cart.id == productId);
             console.log("this product cantidad: " + thisProduct.cantidad);
-            if (thisProduct.cantidad) {
-                console.log(true)
-            } else {
-                console.log(false);
-                if (cartItem) {
-                    thisProduct.cantidad = cartItem.cantidad;
-                    if (cartItem.cantidad >= cartItem.stock) {
-                        setAvailableStock(false);
-                    }
-                }
-                console.log("nueva cantidad: " + thisProduct.cantidad);
+            if (cartItem) {
+                thisProduct.cantidad = cartItem.cantidad;
             }
 
             if ((thisProduct.cantidad + count) > thisProduct.stock || count > thisProduct.stock) {
                 console.log("no hay stock!");
                 alert("No hay stock");
+                setAvailableStock(false);
                 setIsAdded(true);
             } else {
                 if (cartItem) {
@@ -117,17 +116,25 @@ function ItemDetail() {
                     <strong>cantidad en carrito: </strong><font color="#808080">{thisProduct.cantidad}</font>
                     <br />
                     <div style={{ marginBottom: "30px", display: "flex", justifyContent: "center" }}>
-                        {isAdded ? <div><div style={{ display: "flex" }}>
+                        {isAdded ? <div>
+                            {availableStock ? <div style={{ display: "flex" }}>
                             <button type="button" class="button1" onClick={Added} style={{ marginRight: "15px" }}>
                                 Agregar al Carrito
                             </button>
                             <Contador count={count} setCount={setCount} />
-                        </div>
-                            {availableStock ? <div>disponible</div> : <div style={{display:"flex", alignItems:"center"}}> no hay mas stock <button type="button" class="button1" style={{ marginLeft: "10px" }} >
-                                <Link to={`/products`} >
-                                    Volver
+                        </div> : <div><div style={{ display: "flex", alignItems: "center" }}>
+                                <Link to={`/cart`} style={{ textDecoration: "none" }}>
+                                    <button type="button" class="button1" style={{ marginLeft: "0px" }}>
+                                        Finalizar compra
+                                    </button>
                                 </Link>
-                            </button></div>}
+                                <button type="button" class="button1" style={{ marginLeft: "10px" }} >
+                                    <Link to={`/products`} style={{textDecoration: "none"}} >
+                                        Volver
+                                    </Link>
+                                </button>
+                                 
+                            </div><h3 style={{marginLeft:"40px"}}>no hay stock</h3></div>}
                         </div> : <div><div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
 
                             <Link to={`/cart`} style={{ textDecoration: "none" }}>
@@ -139,7 +146,7 @@ function ItemDetail() {
                                 Añadir mas
                             </button>
                             <button type="button" class="button1" style={{ marginRight: "10px" }} >
-                                <Link to={`/products`} >
+                                <Link to={`/products`} style={{textDecoration: "none"}}>
                                     Volver
                                 </Link>
                             </button>
