@@ -34,6 +34,8 @@ const CartPage = () => {
         console.log("limpiando carrito");
         setCantidad(0);
         setSumaTotal(0);
+        localStorage.setItem('cartItems', []);
+        localStorage.setItem('cantidad', 0);
     }
 
     function removeId(id) {
@@ -44,6 +46,7 @@ const CartPage = () => {
         //Le resto la cantidad de mi producto seleccionado al context de cantidad
         console.log("cantidad del item con id: " + id + " es igual a: " + found.cantidad);
         setCantidad(cantidad - found.cantidad);
+        localStorage.setItem('cantidad', (cantidad - found.cantidad));
 
         //Reseteo la cantidad de mi elemento dentro del array de cart context
         console.log("vaciando cantidad del item con id: " + id + " con una cantidad de: " + found.cantidad);
@@ -55,6 +58,8 @@ const CartPage = () => {
 
         console.log("newArray = " + JSON.stringify(newArray));
         setCartItems(newArray);
+        localStorage.setItem('cartItems', JSON.stringify(newArray));
+        
     }
 
     return (

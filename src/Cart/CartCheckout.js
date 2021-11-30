@@ -52,6 +52,8 @@ const CartCheckout = () => {
         console.log("limpiando carrito");
         setCantidad(0);
         setSumaTotal(0);
+        localStorage.setItem('cartItems', []);
+        localStorage.setItem('cantidad', 0);
     }
     const [sumaTotal, setSumaTotal] = useState(calcularTotal);
     //const [name] = useState("");
@@ -99,9 +101,13 @@ const CartCheckout = () => {
 
     const onSubmitForm = (event) => {
         event.preventDefault();
-        alert("nombre value is :" + JSON.stringify(values));
-        CreateOrder(cartItems);
-        return false;
+        //alert("datos del formulario:" + JSON.stringify(values));
+        if (cartItems.length <= 0) {
+            alert("carrito vacio, añade productos!")
+            return false;
+        } else {
+            CreateOrder(cartItems);
+        }
     };
 
     const onChangeName = (e) => {
