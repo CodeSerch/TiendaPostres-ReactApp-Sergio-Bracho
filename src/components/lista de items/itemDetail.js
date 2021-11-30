@@ -16,6 +16,7 @@ const db = getFirestore(app);
 function ItemDetail() {
     const { productId } = useParams();
     const productosCol = collection(db, "productos");
+    const [availableStock, setAvailableStock] = useState(true);
 
     useEffect(() => {
         const q = query(productosCol, where("id", "==", parseInt(productId)));
@@ -40,6 +41,8 @@ function ItemDetail() {
 
     const [isAdded, setIsAdded] = useState(true);
     const Added = () => {
+
+
         if (isAdded) {
             setIsAdded(false);
             const cartItem = cartItems.find(cart => cart.id == productId);
@@ -50,6 +53,9 @@ function ItemDetail() {
                 console.log(false);
                 if (cartItem) {
                     thisProduct.cantidad = cartItem.cantidad;
+                    if (cartItem.cantidad >= cartItem.stock) {
+                        setAvailableStock(false);
+                    }
                 }
                 console.log("nueva cantidad: " + thisProduct.cantidad);
             }
@@ -111,11 +117,17 @@ function ItemDetail() {
                     <strong>cantidad en carrito: </strong><font color="#808080">{thisProduct.cantidad}</font>
                     <br />
                     <div style={{ marginBottom: "30px", display: "flex", justifyContent: "center" }}>
-                        {isAdded ? <div style={{ display: "flex" }}>
+                        {isAdded ? <div><div style={{ display: "flex" }}>
                             <button type="button" class="button1" onClick={Added} style={{ marginRight: "15px" }}>
                                 Agregar al Carrito
                             </button>
                             <Contador count={count} setCount={setCount} />
+                        </div>
+                            {availableStock ? <div>disponible</div> : <div style={{display:"flex", alignItems:"center"}}> no hay mas stock <button type="button" class="button1" style={{ marginLeft: "10px" }} >
+                                <Link to={`/products`} >
+                                    Volver
+                                </Link>
+                            </button></div>}
                         </div> : <div><div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
 
                             <Link to={`/cart`} style={{ textDecoration: "none" }}>

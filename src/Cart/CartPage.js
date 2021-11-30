@@ -45,6 +45,10 @@ const CartPage = () => {
 
         //Le resto la cantidad de mi producto seleccionado al context de cantidad
         console.log("cantidad del item con id: " + id + " es igual a: " + found.cantidad);
+
+        //restar a la suma total el valor del objeto eliminado
+        setSumaTotal(sumaTotal - (found.cantidad * found.price));
+
         setCantidad(cantidad - found.cantidad);
         localStorage.setItem('cantidad', (cantidad - found.cantidad));
 
