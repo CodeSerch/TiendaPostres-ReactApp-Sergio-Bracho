@@ -42,9 +42,9 @@ class SignUp extends Component {
     render() {
         return (
             <div>
-                <Link to={''} style={{ textDecoration: "none", marginRight: "10px" }} onClick={() => { this.setState({ show: true }) }}>
+                <button onClick={() => { this.setState({ show: true }) }} class="button1">
                     Login
-                </Link>
+                </button>
                 <Modal show={this.state.show} onHide={() => this.setState({ show: false })} id="modal-signup">
                     <Modal.Header closeButton>
                         <Modal.Title>Login</Modal.Title>

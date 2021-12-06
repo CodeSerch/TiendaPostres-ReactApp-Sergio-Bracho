@@ -12,7 +12,7 @@ export const NavBar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#7D5A50' }}>
+    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#7D5A50', marginRight:"auto",marginLeft:"auto" }}>
       <a className="navbar-brand" href="/">
         PostresOlavarria
       </a>
@@ -48,9 +48,6 @@ export const NavBar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <SignUp></SignUp>
-            </li>
-            <li className="nav-item">
               <Link to={`/categorys`} style={{ textDecoration: "none", marginRight: "10px" }}>
                 Categorias
               </Link>
@@ -83,6 +80,7 @@ export const NavBar = () => {
               </ul>
             </div>
           </ul>
+          <SignUp/>
           <Link to={`/cart`} style={{ textDecoration: "none", marginRight: "10px" }}>
             <CardWidget />
           </Link>

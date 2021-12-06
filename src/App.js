@@ -17,7 +17,7 @@ import LoginPage from "./components/loginPage";
 function App() {
   return (
     <DataProvider>
-      <div>
+      <div style={{marginLeft:"50px",marginRight:"50px"}}>
         <BrowserRouter>
           <div className="App">
             <NavBar />
@@ -28,7 +28,7 @@ function App() {
                 <Home />
               </Route>
               <Route exact path="/products">
-                <Products />
+                <ItemList />
               </Route>
               <Route path="/products/:productId">
                 <ItemDetail />
@@ -47,7 +47,7 @@ function App() {
           </div>
         </BrowserRouter>
 
-        <footer>&copy; Copyright 2021 Sergio Bracho</footer>
+        <footer style={{margin:"0px",padding:"0px", paddingTop:"10px",paddingBottom:"10px"}}>&copy; Copyright 2021 Sergio Bracho</footer>
 
       </div>
     </DataProvider>
@@ -65,15 +65,6 @@ function App() {
         </div>
       </div>
     )
-  }
-  function Products() {
-    return (
-
-      <div className="App">
-        <h1 class="titulo1">Productos</h1>
-        <ItemList />
-      </div>
-    );
   }
   function Category() {
     const { categoryId } = useParams();

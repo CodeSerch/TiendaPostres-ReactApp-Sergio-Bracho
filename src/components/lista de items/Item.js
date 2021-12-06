@@ -10,7 +10,7 @@ const items = ({ id, name, description, stock, imgurl, price }) => {
     }
 
     return (
-        <div class="card" style={{ width: "18rem", display: "flex", backgroundColor: "rgba(125, 90, 80, 0.1)", marginRight:"40px", borderRadius:"5%", marginBottom:"30px"}}>
+        <div class="card" style={{ width: "18rem", display: "flex", backgroundColor: "white", marginRight:"40px", borderRadius:"5%", marginBottom:"30px"}}>
             <div style={{alignSelf: "center", paddingTop:"20px"}}>
                 <img class="imagen1" src={imgurl} alt="Card image cap"></img>
             </div>
