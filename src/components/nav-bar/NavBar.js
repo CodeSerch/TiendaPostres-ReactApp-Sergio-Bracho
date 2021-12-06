@@ -3,15 +3,19 @@ import { Link, BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import CardWidget from "../CartWidget";
-import React from "react";
+import React, { useState } from "react";
+import SignUp from "../signup";
 
 export const NavBar = () => {
-  
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#7D5A50' }}>
       <a className="navbar-brand" href="/">
-          PostresOlavarria
-        </a>
+        PostresOlavarria
+      </a>
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -43,7 +47,9 @@ export const NavBar = () => {
                 Ordenes
               </Link>
             </li>
-            
+            <li className="nav-item">
+              <SignUp></SignUp>
+            </li>
             <li className="nav-item">
               <Link to={`/categorys`} style={{ textDecoration: "none", marginRight: "10px" }}>
                 Categorias

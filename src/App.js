@@ -12,7 +12,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from "./context/cartContext";
 import CartCheckout from "./Cart/CartCheckout";
 import Orders from "./Cart/Orders";
-
+import LoginPage from "./components/loginPage";
 
 function App() {
   return (
@@ -42,6 +42,7 @@ function App() {
               <Route path="/cart" component={CartPage} exact />
               <Route path="/cartCheckout" component={CartCheckout} exact />
               <Route path="/orders" component={Orders} exact />
+              <Route path="/login" component={LoginPage}></Route>
             </Switch>
           </div>
         </BrowserRouter>
