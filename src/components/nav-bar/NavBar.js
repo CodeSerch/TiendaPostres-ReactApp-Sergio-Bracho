@@ -12,7 +12,7 @@ export const NavBar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#7D5A50', marginRight:"auto",marginLeft:"auto" }}>
+    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#7D5A50', marginRight: "auto", marginLeft: "auto" }}>
       <a className="navbar-brand" href="/">
         PostresOlavarria
       </a>
@@ -47,40 +47,35 @@ export const NavBar = () => {
                 Ordenes
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to={`/categorys`} style={{ textDecoration: "none", marginRight: "10px" }}>
-                Categorias
-              </Link>
-            </li>
 
-            <div className="dropdown">
+            <div className="dropdown" style={{ marginRight: "10px" }}>
               <button
-                className="btn btn-secondary dropdown-toggle"
+                className="btn btn-primary dropdown-toggle"
                 type="button"
                 id="dropdownMenuButton1"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Menu
+                Categorias
               </button>
               <ul
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Encargar
+                  <a className="dropdown-item" href="/category/1">
+                    Categoria 1
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Contacto
+                  <a className="dropdown-item" href="/category/2">
+                    Categoria 2
                   </a>
                 </li>
               </ul>
             </div>
           </ul>
-          <SignUp/>
+          <SignUp />
           <Link to={`/cart`} style={{ textDecoration: "none", marginRight: "10px" }}>
             <CardWidget />
           </Link>

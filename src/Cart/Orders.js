@@ -28,7 +28,7 @@ const Orders = () => {
 
     return (
         <div>
-            <h1 style={{display:"flex", justifyContent:"center"}}>Ordenes</h1>
+            <h1 style={{display:"flex", justifyContent:"center",color:"white"}} class="titulo1">Ordenes</h1>
             <div class="itemList" style={{display:"flex", flexWrap:"wrap"}}>
                 {orders.map(order => (
                     <div class="ordenes">

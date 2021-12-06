@@ -15,7 +15,7 @@ class SignUp extends Component {
     }
 
     signUpForm = () => {
-        console.log("siging up xd");
+        console.log("siging up...");
         let signupForm = document.getElementById("signup-form");
         signupForm.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -24,7 +24,7 @@ class SignUp extends Component {
             try {
                 console.log("trying");
                 const { email, password } = getSignupFormInfo();
-                console.log("email:" + email + "password:" + password);
+                console.log("email: " + email + "password: " + password);
             } catch (error) {
                 console.log(error);
             }
@@ -42,7 +42,7 @@ class SignUp extends Component {
     render() {
         return (
             <div>
-                <button onClick={() => { this.setState({ show: true }) }} class="button1">
+                <button onClick={() => { this.setState({ show: true }) }} type="button" class="btn btn-primary" style={{marginRight:"20px"}}>
                     Login
                 </button>
                 <Modal show={this.state.show} onHide={() => this.setState({ show: false })} id="modal-signup">
@@ -58,10 +58,6 @@ class SignUp extends Component {
                             <div class="input-field">
                                 <input type="password" id="signup-password" required />
                                 <label for="signup-password">Contraseña:</label>
-                            </div>
-                            <div class="input-field">
-                                <input type="text" id="signup-bio" required />
-                                <label for="signup-bio">Set a bio</label>
                             </div>
                             <Button variant="primary" type="submit" onClick={() => this.signUpForm()}>Sign up</Button>
                         </form>

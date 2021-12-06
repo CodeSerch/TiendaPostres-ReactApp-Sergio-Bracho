@@ -17,7 +17,7 @@ import LoginPage from "./components/loginPage";
 function App() {
   return (
     <DataProvider>
-      <div style={{marginLeft:"50px",marginRight:"50px"}}>
+      <div style={{ backgroundColor: "#FCDEC0" }}>
         <BrowserRouter>
           <div className="App">
             <NavBar />
@@ -33,9 +33,6 @@ function App() {
               <Route path="/products/:productId">
                 <ItemDetail />
               </Route>
-              <Route path="/categorys/">
-                <Categorys />
-              </Route>
               <Route path="/category/:categoryId">
                 <Category />
               </Route>
@@ -47,7 +44,17 @@ function App() {
           </div>
         </BrowserRouter>
 
-        <footer style={{margin:"0px",padding:"0px", paddingTop:"10px",paddingBottom:"10px"}}>&copy; Copyright 2021 Sergio Bracho</footer>
+        <footer style={{ margin: "0px", padding: "0px", paddingTop: "10px", paddingBottom: "2px" }}>
+          <h3>&copy; Copyright 2021 Sergio Bracho</h3>
+          <section class="mb-4">
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="https://www.linkedin.com/in/sergio-bracho-059767176/" role="button"><i class="fab fa-linkedin-in"></i></a>
+            <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
+          </section>
+        </footer>
 
       </div>
     </DataProvider>
@@ -63,6 +70,27 @@ function App() {
             <img src=""></img>
           </header>
         </div>
+        <div style={{ backgroundColor: "#FCDEC0", justifyContent: "center", textAlign: "center" }}>
+          <h1 class="titulo1" style={{ paddingTop: "20px" }}>Bienvenido!</h1>
+          <div class="itemList" id="itemList">
+            <div class="item">
+              <img src="https://i.imgur.com/2fDnCV5.jpeg" style={{ borderRadius: "10px", width: "400px" }} />
+              <h3 class="itemText">Los mas deliciosos de la ciudad! encarga ahora!</h3>
+              <button class="button1">
+                <Link to={`/products`} style={{ textDecoration: "none", marginRight: "10px" }}>
+                  Ver Productos
+                </Link>
+              </button>
+            </div>
+            <div class="item">
+
+              <img src="https://cdn.dribbble.com/users/2279668/screenshots/9163485/1.jpg" style={{ borderRadius: "10px", height: "16rem", width: "18rem " }} />
+              <h3 class="itemText">Realizamos tu pedido lo mas pronto posible!</h3>
+
+            </div>
+          </div>
+        </div>
+
       </div>
     )
   }
@@ -80,20 +108,7 @@ function App() {
       </div>
     );
   }
-  function Categorys() {
-    return (
-      <div className="App">
-        <div style={{ textAlign: "center", margin: "100px" }}>
-          <Link to={`/category/${1}`} class="button1" style={{ margin: "50px", padding: "50px", backgroundColor: "#E5B299", borderRadius: "30px", fontSize: "30px" }}>
-            Categoria 1
-          </Link>
-          <Link to={`/category/${2}`} class="button1" style={{ margin: "50px", padding: "50px", backgroundColor: "#E5B299", borderRadius: "30px", fontSize: "30px" }}>
-            Categoria 2
-          </Link>
-        </div>
-      </div>
-    );
-  }
+
 }
 
 export default App;

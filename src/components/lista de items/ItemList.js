@@ -32,13 +32,20 @@ const Promises = () => {
   }, []);
 
   return (
-    <div style={{display:"flex",flexDirection:"column", justifyContent:"center", textAlign:"center",backgroundColor:"#FCDEC0"}}>
-      <div class="primaria" style={{ fontFamily: "Paytone One",backgroundImage:"url(https://www.setaswall.com/wp-content/uploads/2017/04/Dessert-Strawberry-Chocolate-Wallpaper-1920x1080.jpg)",marginBottom:"40px" }} >
-          <header>
-            <h1 class="titulo1" style={{ color: "white"}}>Productos</h1>
-          </header>
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center", backgroundColor: "#FCDEC0" }}>
+      <div class="primaria" style={{ fontFamily: "Paytone One", backgroundImage: "url(https://www.setaswall.com/wp-content/uploads/2017/04/Dessert-Strawberry-Chocolate-Wallpaper-1920x1080.jpg)", marginBottom: "40px" }} >
+        <header>
+          <h1 class="titulo1" style={{ color: "white" }}>Productos</h1>
+        </header>
+      </div>
+      <div style={{ fontFamily: "Paytone One", marginLeft: "40px", marginRight: "40px" }}>
+        <div style={{display:"flex",justifyContent:"center"}}>
+          <h2 style={{ color: "white", width: "500px",textShadow:"1px 1px 3px black" }}>
+            Comprá on-line ahora
+            Mirá todo lo que podés llevar a tu casa con un solo click
+          </h2>
         </div>
-      <div style={{ fontFamily: "Paytone One" }}>
+
         <div class="itemList" style={{ display: "flex", justifyContent: "center", marginBottom: "50px", marginTop: "10px", flexWrap: "wrap" }}>
           {items.map((items) => (
             <Item key={items.id} {...items} />
