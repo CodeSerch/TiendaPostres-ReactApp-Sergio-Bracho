@@ -41,7 +41,7 @@ function ItemDetail() {
         });
 
 
-        //const cartItem = cartItems.find(cart => cart.id == productId);
+        const cartItem = cartItems.find(cart => cart.id == productId);
         if (cartItem) {
             thisProduct.cantidad = cartItem.cantidad;
             if (cartItem.cantidad >= cartItem.stock) {
