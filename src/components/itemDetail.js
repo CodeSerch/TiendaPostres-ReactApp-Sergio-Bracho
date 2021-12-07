@@ -25,6 +25,13 @@ function ItemDetail() {
 
     const [isAdded, setIsAdded] = useState(true);
 
+    if (cartItems.find == null) { 
+        const cartItem = [];
+    } else {
+        const cartItem = cartItems.find(cart => cart.id == productId);
+    }
+
+
     useEffect(() => {
         const q = query(productosCol, where("id", "==", parseInt(productId)));
         getDocs(q).then((querySnapshot) => {
@@ -40,11 +47,12 @@ function ItemDetail() {
             console.log("loading false");
         });
 
-        try {
-        const cartItem = cartItems.find(cart => cart.id == productId);
-        } catch (error) {
-            console.log(error)
+        if (cartItems.find == null) { 
+            const cartItem = [];
+        } else {
+            const cartItem = cartItems.find(cart => cart.id == productId);
         }
+
         if (cartItem) {
             thisProduct.cantidad = cartItem.cantidad;
             if (cartItem.cantidad >= cartItem.stock) {
