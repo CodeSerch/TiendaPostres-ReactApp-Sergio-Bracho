@@ -25,11 +25,9 @@ function ItemDetail() {
 
     const [isAdded, setIsAdded] = useState(true);
 
-    const cartItem = [];
 
 
     useEffect(() => {
-        console.log("useEffect")
         const q = query(productosCol, where("id", "==", parseInt(productId)));
         getDocs(q).then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
@@ -43,7 +41,7 @@ function ItemDetail() {
         }).finally(() => {
             console.log("loading false");
         });
-            //const cartItem = cartItems.find(cart => cart.id == productId);
+        const cartItem = cartItems.find(cart => cart.id == productId);
         if (cartItem) {
             thisProduct.cantidad = cartItem.cantidad;
             if (cartItem.cantidad >= cartItem.stock) {
