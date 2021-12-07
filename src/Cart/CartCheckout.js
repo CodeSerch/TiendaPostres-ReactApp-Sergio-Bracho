@@ -1,7 +1,7 @@
 import React, { useState, useContext, useParams, setState } from "react";
 import { Link } from "react-router-dom";
 import "../components/styles/styles.css";
-import { CartContext } from "../context/cartContext";
+import { CartContext } from "./cartContext";
 import { Form, Button, FormGroup, FormControl, ControlLabel, Col, Row } from "react-bootstrap";
 import { width } from "dom-helpers";
 

@@ -1,18 +1,15 @@
 import "./App.css";
 import NavBar from "./components/nav-bar/NavBar";
-import ItemList from "./components/lista de items/ItemList";
-import ItemListByCategory from "./components/lista de items/ItemListByCategory";
-//import items from "./components/constanteItems";
+import ItemList from "./components/ItemList";
+import ItemListByCategory from "./components/ItemListByCategory";
 import { BrowserRouter, Switch, Route, useParams, Link } from "react-router-dom";
-import ItemDetail from "./components/lista de items/itemDetail";
+import ItemDetail from "./components/itemDetail";
 import "./components/styles/styles.css";
 import CartPage from "./Cart/CartPage";
-import { DataProvider } from "./context/cartContext";
-import React, { useState, useEffect, useContext } from 'react';
-import { CartContext } from "./context/cartContext";
+import { DataProvider } from "./Cart/cartContext";
+import React from 'react';
 import CartCheckout from "./Cart/CartCheckout";
 import Orders from "./Cart/Orders";
-import LoginPage from "./components/loginPage";
 
 function App() {
   return (
@@ -39,7 +36,6 @@ function App() {
               <Route path="/cart" component={CartPage} exact />
               <Route path="/cartCheckout" component={CartCheckout} exact />
               <Route path="/orders" component={Orders} exact />
-              <Route path="/login" component={LoginPage}></Route>
             </Switch>
           </div>
         </BrowserRouter>
@@ -67,7 +63,6 @@ function App() {
         <div class="primaria" style={{ fontFamily: "Paytone One" }} >
           <header>
             <h1 class="titulo1" style={{ color: "white" }}>Tienda de Postres</h1>
-            <img src=""></img>
           </header>
         </div>
         <div style={{ backgroundColor: "#FCDEC0", justifyContent: "center", textAlign: "center" }}>

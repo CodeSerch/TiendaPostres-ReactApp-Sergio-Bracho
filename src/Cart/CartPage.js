@@ -2,7 +2,7 @@ import { remove } from "dom-helpers";
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 //import items from "../components/constanteItems";
-import { CartContext } from "../context/cartContext";
+import { CartContext } from "./cartContext";
 import "../components/styles/styles.css";
 
 

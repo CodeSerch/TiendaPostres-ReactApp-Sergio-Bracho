@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Item from "./Item";
-import "../styles/styles.css";
+
+import "./styles/styles.css";
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore/lite';
-import firebaseConfig from "../../firebaseConfig";
+import firebaseConfig from "../firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

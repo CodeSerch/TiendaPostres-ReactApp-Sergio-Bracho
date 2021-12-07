@@ -1,13 +1,12 @@
 import { useEffect, useState, useContext, useParams } from "react";
-import { promises } from "../lista de items/promises";
 import Item from "./Item";
-import "../styles/styles.css";
+import "./styles/styles.css";
 
-import { CartContext } from "../../context/cartContext";
+import { CartContext } from "../Cart/cartContext";
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import firebaseConfig from "../../firebaseConfig";
+import firebaseConfig from "../firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

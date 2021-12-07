@@ -1,8 +1,8 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../styles/styles.css";
-import { CartContext } from "../../context/cartContext";
+import "./styles/styles.css";
+import { CartContext } from "../Cart/cartContext";
 import { useContext } from "react";
 
 const items = ({ id, name, description, stock, imgurl, price }) => {

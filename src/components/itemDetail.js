@@ -1,14 +1,14 @@
 import React from "react"
 import { useParams } from "react-router-dom"
-import "../styles/styles.css";
+import "./styles/styles.css";
 import { Link } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
-import { CartContext } from "../../context/cartContext";
-import Contador from "../contador";
+import { CartContext } from "../Cart/cartContext";
+import Contador from "./contador";
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore/lite';
-import firebaseConfig from "../../firebaseConfig";
+import firebaseConfig from "../firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
