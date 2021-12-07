@@ -79,14 +79,11 @@ const CartPage = () => {
                     <div >
                         <img src={items.imgurl} alt="postre2" class="cartImg" />
                     </div>
-                    <div style={{ width: "200px" }}>
-                        <strong >{items.name} x {items.cantidad} u.</strong>
-                        <br />
-                        <strong >precio: {items.price}</strong >
-                        <br />
-                        <strong >id: {items.id}</strong >
-                        <br />
-                        <strong >total: {(items.price * items.cantidad)}</strong >
+                    <div style={{ width: "400px" }}>
+                        <strong >{items.name}</strong> x {items.cantidad}u.
+                        <strong > Precio:</strong> {items.price}
+                        <strong > Id:</strong> {items.id}
+                        <strong > Total:</strong> {(items.price * items.cantidad)}
                     </div>
                     <button onClick={() => removeId(items.id)} class="button1" style={{ margin: "50px" }}> remover</button>
                 </div>

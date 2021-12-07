@@ -73,8 +73,8 @@ div.itemDetail {
 }
 img.cartImg {
   margin: 20px;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   border-radius: 10px;
 }
 
@@ -150,9 +150,10 @@ div.itemContainer {
   align-items: center;
   justify-content: center;
   margin: -1px;
-  height: 105px;
+  height: 90px;
+  margin-bottom: 10px;
   border-radius: 10px;
-  border: 2px solid gray;
+  border: 2px solid rgba(167, 111, 7, 0.582);
     border-radius: 10px;
 }
 
@@ -235,6 +236,10 @@ h1 {
 
 nav.navegacion {
   overflow: auto;
+}
+
+h1.cartH1 {
+  color: rgb(255, 178, 35);
 }
 
 i {
@@ -343,6 +348,7 @@ img.envioGratis {
 
   h1.cartH1 {
     font-size: 30px;
+    color: white;
   }
 
   img.cartImg {

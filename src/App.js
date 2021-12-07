@@ -41,7 +41,10 @@ function App() {
         </BrowserRouter>
 
         <footer style={{ margin: "0px", padding: "0px", paddingTop: "10px", paddingBottom: "2px" }}>
-          <h3>&copy; Copyright 2021 Sergio Bracho</h3>
+          <h3>&copy; Copyright 2021 Sergio Bracho 
+
+            <img src="http://assets.stickpng.com/images/5847f40ecef1014c0b5e488a.png"  style={{ width: "20px", height: "30px", marginBottom: "10px",marginLeft:"20px" }}></img>
+          </h3>
           <section class="mb-4">
             <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
             <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>

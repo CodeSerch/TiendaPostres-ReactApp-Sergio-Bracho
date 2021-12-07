@@ -16,7 +16,7 @@ const items = ({ id, name, description, stock, imgurl, price }) => {
             </div>
             <div class="card-body">
                 <h5 class="card-title">{name}</h5>
-                <p style={{ color: "brown" }}>{price}$</p>
+                <p style={{ color: "rgb(172, 36, 31)", fontSize:"20px"  }}>{price}$</p>
                 <Link to={`/products/${id}`} style={{ textDecoration: "none" }}>
                     <button onClick={Added} type="button" class="button1" style={{ marginLeft: "auto", marginRight: "auto" }}>
                         Comprar
