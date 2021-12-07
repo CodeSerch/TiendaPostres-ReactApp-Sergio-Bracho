@@ -40,8 +40,11 @@ function ItemDetail() {
             console.log("loading false");
         });
 
-
+        try {
         const cartItem = cartItems.find(cart => cart.id == productId);
+        } catch (error) {
+            console.log(error)
+        }
         if (cartItem) {
             thisProduct.cantidad = cartItem.cantidad;
             if (cartItem.cantidad >= cartItem.stock) {
