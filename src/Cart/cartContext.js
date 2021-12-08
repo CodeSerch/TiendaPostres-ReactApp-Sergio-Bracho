@@ -8,10 +8,11 @@ const dataFixed = ["null prueba"];
 export const DataProvider = ({ children }) => {
     const getLastProduct = () => {
         let productString = localStorage.getItem('cartItems');
-        if (productString == null){
+        if (productString === null) {
             localStorage.setItem('cartItems', []);
-        }
-        console.log("productoString:" + productString)
+            console.log("se hizo un set item en cart Item, el producto string es null")
+          }
+        console.log("productoString: " + productString)
         if (productString === "") {
             return []
         } else {
