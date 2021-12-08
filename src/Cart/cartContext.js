@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
-const dataFixed = [];
+const dataFixed = ["null prueba"];
 
 
 export const DataProvider = ({ children }) => {
