@@ -11,7 +11,7 @@ const CartPage = () => {
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
 
-    function calcularTotal(){
+    const calcularTotal = () => {
         let suma = 0;
         if (cantidad >= 1) {
             for (let i = 0; i < cartItems.length; i++) {
@@ -69,7 +69,7 @@ const CartPage = () => {
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h1 class="cartH1">Lista de productos</h1>
-            {(0 > 0) ? <br></br> : <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}><h1>carrito vacio</h1><Link to={`/products`} style={{ textDecoration: "none" }}>
+            {(cartItems.length > 0) ? <br></br> : <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}><h1>carrito vacio</h1><Link to={`/products`} style={{ textDecoration: "none" }}>
                 <button type="button" class="button1">
                     Volver
                 </button>
