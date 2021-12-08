@@ -11,7 +11,7 @@ const CartPage = () => {
     const { cartItems, setCartItems } = useContext(CartContext);
     const { cantidad, setCantidad } = useContext(CartContext);
 
-    const calcularTotal = () => {
+    function calcularTotal(){
         let suma = 0;
         if (cantidad >= 1) {
             for (let i = 0; i < cartItems.length; i++) {
