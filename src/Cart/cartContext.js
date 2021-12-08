@@ -8,6 +8,9 @@ const dataFixed = ["null prueba"];
 export const DataProvider = ({ children }) => {
     const getLastProduct = () => {
         let productString = localStorage.getItem('cartItems');
+        if (productString == null){
+            localStorage.setItem('cartItems', []);
+        }
         console.log("productoString:" + productString)
         if (productString === "") {
             return []
@@ -19,6 +22,9 @@ export const DataProvider = ({ children }) => {
     }
     const getCantidad = () => {
         let productString = localStorage.getItem('cantidad');
+        if (productString == null){
+            localStorage.setItem('cantidad', 0);
+        }
         let cantidad = JSON.parse(productString);
         console.log("cantidad:" + productString);
         return cantidad
